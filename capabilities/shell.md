@@ -32,9 +32,9 @@ rules:
     pass_condition: Starship exists or prompt is explicitly customized.
     severity: warn
   - rule_id: VAL-shell-05
-    assertion: Core Claude shortcut cc resolves to claude invocation with permissions flag.
-    method: Inspect shell abbreviation/alias/function registry.
-    pass_condition: cc expands exactly to claude --dangerously-skip-permissions.
+    assertion: Core Claude shortcuts are defined with explicit mappings.
+    method: Inspect shell abbreviation/alias/function registry for cc, ccp, ccc, ccr, cct.
+    pass_condition: cc -> claude --dangerously-skip-permissions; ccp -> claude --dangerously-skip-permissions -p; ccc -> claude --dangerously-skip-permissions --continue; ccr -> claude --dangerously-skip-permissions --resume; cct -> claude --dangerously-skip-permissions setup-token.
     severity: blocker
   - rule_id: VAL-shell-06
     assertion: Extended Claude task shortcuts are defined.
