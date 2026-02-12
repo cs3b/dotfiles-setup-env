@@ -9,6 +9,9 @@ This repository stores:
 
 It does not store provisioning scripts or secret values.
 
+## Demo
+![setup-env demo](assets/setup-env-demo.gif)
+
 ## Reading Order
 1. `CONTRACT.md`
 2. `profiles/*.md`
