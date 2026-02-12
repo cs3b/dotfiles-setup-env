@@ -2,6 +2,12 @@
 
 All notable changes to this repository are documented in this file.
 
+## 2026-02-12 (gh and git identity checks)
+- Added core validation for `gh auth status` under SSH/Git access capability.
+- Added core validation for GitHub credential helper integration from `gh auth setup-git` semantics.
+- Added core validation for global git identity (`user.name` and `user.email`).
+- Updated checklist and scenarios to include these new SSH/Git compliance checks.
+
 ## 2026-02-12 (lazyvim templates)
 - Added `templates/lazyvim/plugins/` drop-in templates for:
   - hidden and gitignored files visible by default

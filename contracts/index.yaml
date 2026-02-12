@@ -74,6 +74,9 @@ capabilities:
   - VAL-ssh-git-access-02
   - VAL-ssh-git-access-03
   - VAL-ssh-git-access-04
+  - VAL-ssh-git-access-05
+  - VAL-ssh-git-access-06
+  - VAL-ssh-git-access-07
 - id: CAP-terminal-multiplexer
   path: capabilities/terminal-multiplexer.md
   status: required
@@ -127,6 +130,7 @@ validation:
     - SCN-bun-global-shebang-compatibility
     - SCN-fresh-arch-core
     - SCN-fresh-macos-core
+    - SCN-gh-auth-and-git-identity
     - SCN-headless-markdown-preview-build
     - SCN-install-smoke-after-mutation
     - SCN-native-cli-source-selection
@@ -159,6 +163,7 @@ validation:
     - VAL-shell-10
     - VAL-ssh-git-access-01
     - VAL-ssh-git-access-04
+    - VAL-ssh-git-access-07
     - VAL-terminal-multiplexer-01
     - VAL-version-manager-01
     - VAL-version-manager-02
@@ -186,6 +191,8 @@ validation:
     - VAL-shell-11
     - VAL-ssh-git-access-02
     - VAL-ssh-git-access-03
+    - VAL-ssh-git-access-05
+    - VAL-ssh-git-access-06
     - VAL-terminal-multiplexer-02
     - VAL-version-manager-04
     optional_profiles:
@@ -333,6 +340,15 @@ rules:
   source_type: capability
   source_id: CAP-ssh-git-access
 - id: VAL-ssh-git-access-04
+  source_type: capability
+  source_id: CAP-ssh-git-access
+- id: VAL-ssh-git-access-05
+  source_type: capability
+  source_id: CAP-ssh-git-access
+- id: VAL-ssh-git-access-06
+  source_type: capability
+  source_id: CAP-ssh-git-access
+- id: VAL-ssh-git-access-07
   source_type: capability
   source_id: CAP-ssh-git-access
 - id: VAL-terminal-multiplexer-01

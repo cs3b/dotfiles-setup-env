@@ -52,6 +52,11 @@ scenarios:
       - PROFILE-core
     platform: any
     expected: no token-like plaintext secrets in tracked files
+  - scenario_id: SCN-gh-auth-and-git-identity
+    profiles:
+      - PROFILE-core
+    platform: any
+    expected: gh auth status is probeable, gh credential helper integration is configured, and git global user.name/user.email are set
   - scenario_id: SCN-install-smoke-after-mutation
     profiles:
       - PROFILE-core

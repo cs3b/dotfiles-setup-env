@@ -19,6 +19,7 @@ core_blockers:
   - VAL-version-manager-06
   - VAL-ssh-git-access-01
   - VAL-ssh-git-access-04
+  - VAL-ssh-git-access-07
   - VAL-fonts-terminal-01
   - VAL-terminal-multiplexer-01
   - VAL-security-hygiene-01
@@ -42,6 +43,8 @@ core_warns:
   - VAL-version-manager-04
   - VAL-ssh-git-access-02
   - VAL-ssh-git-access-03
+  - VAL-ssh-git-access-05
+  - VAL-ssh-git-access-06
   - VAL-fonts-terminal-02
   - VAL-fonts-terminal-03
   - VAL-terminal-multiplexer-02

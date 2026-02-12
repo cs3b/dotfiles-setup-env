@@ -7,6 +7,9 @@ intentions:
   - SSH config supports github.com host mapping to ssh.github.com on port 443.
   - Key-agent integration is enabled where platform supports it.
   - GitHub CLI is installed for authenticated GitHub operations.
+  - GitHub CLI authentication status is probeable with gh auth status.
+  - Git credential helper integration for GitHub is configured via gh auth setup-git semantics.
+  - Git identity is configured for commit authorship.
 rules:
   - rule_id: VAL-ssh-git-access-01
     assertion: SSH config contains GitHub-over-443 host mapping.
@@ -28,6 +31,21 @@ rules:
     method: Run gh --version.
     pass_condition: Command succeeds and reports a version.
     severity: blocker
+  - rule_id: VAL-ssh-git-access-05
+    assertion: GitHub CLI authentication status is verifiable.
+    method: Run gh auth status.
+    pass_condition: Command succeeds and reports status for github.com.
+    severity: warn
+  - rule_id: VAL-ssh-git-access-06
+    assertion: Git credential helper integration for GitHub is configured.
+    method: Inspect git config credential helper entries for github.com.
+    pass_condition: Git config contains a github.com credential helper that uses gh auth git-credential semantics.
+    severity: warn
+  - rule_id: VAL-ssh-git-access-07
+    assertion: Git identity is configured.
+    method: Run git config --global user.name and git config --global user.email.
+    pass_condition: Both values are non-empty and user.email contains @.
+    severity: blocker
 os_package_mapping:
   - canonical_capability: openssh-client
     macos_package_id: system-default
@@ -45,6 +63,9 @@ known_exceptions:
   - id: EXC-ssh-git-access-01
     statement: Enterprise SSH policies may require alternate host alias; equivalent 443 transport must still validate.
     compliance_impact: warn
+  - id: EXC-ssh-git-access-02
+    statement: Ephemeral CI or disposable automation environments may omit personal git identity when commits are not produced.
+    compliance_impact: blocker-waivable
 ---
 # SSH Git Access Capability
 
