@@ -28,7 +28,7 @@ rules:
     severity: blocker
   - rule_id: VAL-package-tooling-04
     assertion: Terminal productivity tools exist.
-    method: Verify bat, eza, dust, bottom or btm, procs, hyperfine, xh, tldr, and bandwhich.
+    method: Verify bat, eza, dust, bottom or btm, procs, hyperfine, xh, tldr, bandwhich, and less.
     pass_condition: Listed capabilities are present with noted name variants.
     severity: warn
   - rule_id: VAL-package-tooling-05
@@ -106,6 +106,10 @@ os_package_mapping:
     macos_package_id: bandwhich
     arch_package_id: bandwhich
     notes: Recommended.
+  - canonical_capability: less-pager
+    macos_package_id: less
+    arch_package_id: less
+    notes: Recommended for git pager compatibility (for example git log and shortcut gl).
   - canonical_capability: lazygit
     macos_package_id: lazygit
     arch_package_id: lazygit

@@ -2,6 +2,15 @@
 
 All notable changes to this repository are documented in this file.
 
+## 2026-02-12 (git pager compatibility)
+- Added `less` recommendation in package tooling capability to prevent `git log`/`gl` pager failures.
+- Added `gl` no-pager fallback mapping when pager tooling is intentionally absent.
+
+## 2026-02-12 (session 2 hardening)
+- Added mandatory post-install smoke probes (`<command> --version` or equivalent).
+- Added native-first CLI sourcing for core tools (including Arch Codex mapping to `openai-codex-bin`).
+- Added Bun global CLI shebang/runtime compatibility checks before considering installs successful.
+
 ## 2026-02-12
 - Big-bang rewrite to Markdown + YAML-frontmatter contract model.
 - Added `CONTRACT.md` invariants and contract-first README.
@@ -21,10 +30,6 @@ All notable changes to this repository are documented in this file.
 - Clarified package-name vs command-name mapping semantics for Bun global CLIs (including `opencode-ai` -> `opencode`).
 - Hardened markdown preview contract for headless-safe build method.
 - Refined security scan contract to exclude contract docs from token-pattern matching.
-- Added Session 2 execution hardening:
-  - mandatory post-install smoke probes (`<command> --version` or equivalent)
-  - native-first CLI sourcing for core tools (including Arch Codex mapping to `openai-codex-bin`)
-  - Bun global CLI shebang/runtime compatibility checks before considering installs successful
 
 ## 2026-02-12 (earlier)
 - Initialized independent git repository in `setup-env`.

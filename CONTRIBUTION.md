@@ -59,7 +59,7 @@ Validation enforces:
 2. Ensure checklist and scenarios remain aligned.
 3. Rebuild `contracts/index.yaml`.
 4. Run validation.
-5. Update `CHANGELOG.md` with meaningful summary.
+5. Update `CHANGELOG.md` with a new append-only section; do not rewrite older sections.
 
 ## Skills
 Skill source of truth is `.agent/skills`.
