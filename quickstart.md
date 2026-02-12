@@ -1,4 +1,4 @@
-# Start Here (TL;DR)
+# Quick Start (TL;DR)
 
 ## Minimum Requirements
 - `git`

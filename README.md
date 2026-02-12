@@ -19,7 +19,7 @@ Most dotfiles repos are scripts and one-off shell tweaks. This repo is different
   - `.claude/skills -> ../.agent/skills`
 
 ## Quick Start
-Start here: [`STARTHERE.MD`](STARTHERE.MD)
+Start here: [`quickstart.md`](quickstart.md)
 
 ## Demo
 ![setup-env demo](assets/setup-env-demo.gif)
@@ -34,23 +34,9 @@ Start here: [`STARTHERE.MD`](STARTHERE.MD)
 - `tools/`: validation and index-generation scripts.
 - `.agent/skills/`: reusable cross-agent skills.
 
-## Authoring Model
-- Every contract markdown file starts with YAML frontmatter.
-- YAML frontmatter is canonical for tooling.
-- Markdown body carries explanation and operational context.
-
-## Validation
-```bash
-tools/validate-contract.sh
-```
-
-Enforced checks:
-- schema validity
-- unique IDs
-- cross-file references
-- rule coverage in checklist
-- waiver integrity and expiry
-- generated index parity (`contracts/index.yaml`)
+## Contributing
+Contribution workflow, authoring rules, and validation steps:
+[`CONTRIBUTION.md`](CONTRIBUTION.md)
 
 ## Non-Goals
 - Provisioning/bootstrap scripts in this repo.
