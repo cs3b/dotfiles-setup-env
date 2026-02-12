@@ -44,7 +44,7 @@ os_package_mapping:
     notes: Optional auth validation.
   - canonical_capability: codex-cli-auth
     macos_package_id: codex
-    arch_package_id: codex
+    arch_package_id: openai-codex-bin
     notes: Optional auth validation.
   - canonical_capability: claude-cli-auth
     macos_package_id: claude-code

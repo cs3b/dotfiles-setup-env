@@ -52,6 +52,21 @@ scenarios:
       - PROFILE-core
     platform: any
     expected: no token-like plaintext secrets in tracked files
+  - scenario_id: SCN-install-smoke-after-mutation
+    profiles:
+      - PROFILE-core
+    platform: any
+    expected: every installed or upgraded CLI is immediately followed by a passing version or help smoke probe
+  - scenario_id: SCN-native-cli-source-selection
+    profiles:
+      - PROFILE-core
+    platform: any
+    expected: core AI CLIs use native distribution sources by default and only use wrapper-based alternatives with explicit documented exception
+  - scenario_id: SCN-bun-global-shebang-compatibility
+    profiles:
+      - PROFILE-core
+    platform: any
+    expected: Bun global CLI entrypoints execute successfully in the target runtime environment without hidden node runtime dependency failures
 ---
 # Validation Scenarios
 

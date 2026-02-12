@@ -39,17 +39,20 @@ Validation enforces:
    - at least one `bash -lc` probe and one `fish -lc` probe
 3. Validate headless-safe Neovim plugin build methods when plugin bootstrap is in scope.
 4. Separate package name and command name when they differ (for example package `opencode-ai`, command `opencode`).
+5. Prefer native binary distributions for core CLIs before JS wrapper installs.
 
 ## Mandatory Execution Batching Rules
 1. Do not combine high-risk network installs with unrelated safe file writes in the same parallel batch.
 2. Install global CLI packages one at a time.
 3. Group probes in parallel batches of at most 8-10 commands.
 4. If probe output is empty, run a second focused verification pass before concluding failure.
+5. After every install or upgrade command, run an immediate smoke probe (`<command> --version` or noninteractive help) before continuing.
 
 ## Mandatory Verification Rules
 1. Shell parity checks must include runtime probes for both bash and fish, not only static file inspection.
 2. Security token scans must exclude contract documentation files from match scope.
 3. Headless plugin installation checks must use noninteractive-safe build methods.
+4. Bun global CLI verification must include entrypoint runtime compatibility checks (avoid hidden `#!/usr/bin/env node` failures).
 
 ## Typical Change Flow
 1. Update relevant files (`capabilities/`, `profiles/`, `os/`, `validation/`).

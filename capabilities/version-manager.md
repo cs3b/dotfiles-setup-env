@@ -9,6 +9,7 @@ intentions:
   - Home-level runtime manager config is source of truth for default runtimes.
   - Bun-managed global AI CLIs include gemini, opencode, and pi-mono.
   - When package and command names differ, both are documented (for example package opencode-ai and command opencode).
+  - Bun-managed CLI installs are verified for executable shebang/runtime compatibility, not only package install success.
 rules:
   - rule_id: VAL-version-manager-01
     assertion: Runtime manager binary exists.
@@ -36,9 +37,9 @@ rules:
     pass_condition: Config exists and includes ruby and bun runtime entries.
     severity: blocker
   - rule_id: VAL-version-manager-06
-    assertion: Bun-managed global AI CLIs are available.
-    method: Verify gemini, opencode, and pi-mono commands and resolution paths; confirm opencode package mapping uses opencode-ai.
-    pass_condition: All commands resolve from bun or mise managed runtime paths and package-to-command mapping is documented.
+    assertion: Bun-managed global AI CLIs are available and executable.
+    method: Verify gemini, opencode, and pi-mono commands and resolution paths; run immediate smoke probes after install; confirm opencode package mapping uses opencode-ai; verify generated script entrypoints do not fail due to missing shebang runtime dependencies.
+    pass_condition: All commands resolve from bun or mise managed runtime paths, pass version/help smoke probes, and package-to-command mapping is documented.
     severity: blocker
 os_package_mapping:
   - canonical_capability: runtime-manager
@@ -68,6 +69,9 @@ os_package_mapping:
 known_exceptions:
   - id: EXC-version-manager-01
     statement: Alternative runtime managers are allowed if replacement is declared and validation semantics are preserved.
+    compliance_impact: warn
+  - id: EXC-version-manager-02
+    statement: If a CLI lacks a version subcommand, a noninteractive help probe may be used as the smoke test.
     compliance_impact: warn
 ---
 # Runtime Version Manager Capability

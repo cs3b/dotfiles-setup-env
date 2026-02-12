@@ -9,6 +9,7 @@ intentions:
   - Native-installed AI coding CLIs are present for codex and claude.
   - Git bootstrap helper command gh-init is available.
   - Package names and command names are documented separately when they differ.
+  - Install steps are not considered complete until an immediate command smoke probe succeeds.
 rules:
   - rule_id: VAL-package-tooling-01
     assertion: Search and file-discovery tools exist.
@@ -32,8 +33,8 @@ rules:
     severity: warn
   - rule_id: VAL-package-tooling-05
     assertion: Native AI coding CLIs are installed.
-    method: Verify codex --version and claude --version or equivalent version/help probes.
-    pass_condition: Both commands are available from native system install paths.
+    method: Verify native package source selection for codex and claude, then run codex --version and claude --version or equivalent version/help probes.
+    pass_condition: Both commands are available from native system install paths and pass immediate post-install smoke probes.
     severity: blocker
   - rule_id: VAL-package-tooling-06
     assertion: Git bootstrap helper gh-init is available.
@@ -119,7 +120,7 @@ os_package_mapping:
     notes: Required.
   - canonical_capability: codex-cli
     macos_package_id: codex
-    arch_package_id: codex
+    arch_package_id: openai-codex-bin
     notes: Required native install.
   - canonical_capability: claude-cli
     macos_package_id: claude-code
@@ -135,6 +136,9 @@ known_exceptions:
     compliance_impact: warn
   - id: EXC-package-tooling-02
     statement: Registry package names may differ from runtime command names and must be documented explicitly (for example opencode-ai package provides opencode command).
+    compliance_impact: warn
+  - id: EXC-package-tooling-03
+    statement: If a native package is unavailable on a platform, an alternate distribution may be used only with documented rationale and passing smoke probes.
     compliance_impact: warn
 ---
 # Package Tooling Capability

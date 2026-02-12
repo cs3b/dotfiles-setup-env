@@ -21,6 +21,10 @@ All notable changes to this repository are documented in this file.
 - Clarified package-name vs command-name mapping semantics for Bun global CLIs (including `opencode-ai` -> `opencode`).
 - Hardened markdown preview contract for headless-safe build method.
 - Refined security scan contract to exclude contract docs from token-pattern matching.
+- Added Session 2 execution hardening:
+  - mandatory post-install smoke probes (`<command> --version` or equivalent)
+  - native-first CLI sourcing for core tools (including Arch Codex mapping to `openai-codex-bin`)
+  - Bun global CLI shebang/runtime compatibility checks before considering installs successful
 
 ## 2026-02-12 (earlier)
 - Initialized independent git repository in `setup-env`.

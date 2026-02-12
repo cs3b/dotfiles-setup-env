@@ -23,6 +23,8 @@ Use this skill when the user wants to align instructions with what exists on the
    - system-present but instruction-missing
    - instruction-defined but system-not-found
    - semantic mismatch
+   - distribution-source mismatch (native binary required, wrapper distribution installed)
+   - install-success mismatch (package is installed but command smoke probe fails)
    - package-name vs command-name canonicalization mismatch (for example `opencode-ai` package -> `opencode` command)
    - probe scope mismatch (for example security scan matching contract docs instead of runtime/config artifacts)
 4. Produce proposal to update instructions.
@@ -37,6 +39,7 @@ Use this skill when the user wants to align instructions with what exists on the
 - Do not auto-edit contracts by default.
 - Do not treat one-off local tools as baseline requirements without user confirmation.
 - Record package-name and command-name separately when they differ.
+- Treat installed-but-unrunnable commands as instruction drift, not as passing state.
 
 ## References
 - Mapping model: `references/mapping-model.md`

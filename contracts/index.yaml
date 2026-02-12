@@ -124,9 +124,12 @@ validation:
   scenarios:
     path: validation/scenarios.md
     scenario_ids:
+    - SCN-bun-global-shebang-compatibility
     - SCN-fresh-arch-core
     - SCN-fresh-macos-core
     - SCN-headless-markdown-preview-build
+    - SCN-install-smoke-after-mutation
+    - SCN-native-cli-source-selection
     - SCN-neovim-behavior
     - SCN-optional-ai-coding-enabled
     - SCN-optional-profile-disabled
