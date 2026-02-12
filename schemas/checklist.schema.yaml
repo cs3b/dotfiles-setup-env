@@ -1,0 +1,15 @@
+kind: schema
+name: checklist
+required:
+  - kind
+  - core_blockers
+  - core_warns
+  - optional_by_profile
+allowed:
+  - kind
+  - core_blockers
+  - core_warns
+  - optional_by_profile
+enums:
+  kind:
+    - checklist

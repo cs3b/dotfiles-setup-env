@@ -1,0 +1,18 @@
+kind: schema
+name: os
+required:
+  - kind
+  - os_id
+  - rules
+  - known_exceptions
+allowed:
+  - kind
+  - os_id
+  - rules
+  - known_exceptions
+enums:
+  kind:
+    - os
+  rule_severity:
+    - blocker
+    - warn

@@ -1,0 +1,21 @@
+kind: schema
+name: runner-output
+required:
+  - run_id
+  - contract_snapshot
+  - results
+  - summary
+  - compliant
+allowed:
+  - run_id
+  - contract_snapshot
+  - results
+  - summary
+  - compliant
+enums:
+  result_status:
+    - pass
+    - warn
+    - fail
+    - waived
+    - not_applicable

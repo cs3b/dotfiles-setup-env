@@ -1,57 +1,63 @@
+---
+kind: capability
+capability_id: CAP-editor-neovim
+status: required
+intentions:
+  - Neovim is present and usable as a default advanced editor.
+  - Configuration is LazyVim-based.
+  - File discovery UX includes hidden and ignored files by default.
+  - Markdown preview capability exists.
+  - Insert-mode relative path insertion capability exists.
+  - Path yanking shortcuts exist for relative and absolute outputs.
+rules:
+  - rule_id: VAL-editor-neovim-01
+    assertion: Neovim binary is installed and launchable.
+    method: Run nvim --version.
+    pass_condition: Command succeeds and reports a version.
+    severity: blocker
+  - rule_id: VAL-editor-neovim-02
+    assertion: LazyVim baseline is active.
+    method: Inspect config for LazyVim bootstrap or import.
+    pass_condition: Config references LazyVim plugin set as base.
+    severity: blocker
+  - rule_id: VAL-editor-neovim-03
+    assertion: Hidden and ignored files are visible in picker and explorer workflows.
+    method: Inspect picker and explorer config state.
+    pass_condition: Hidden and ignored visibility toggles default to enabled.
+    severity: warn
+  - rule_id: VAL-editor-neovim-04
+    assertion: Markdown preview capability is available.
+    method: Validate markdown-preview plugin or command presence.
+    pass_condition: Markdown preview command namespace is registered.
+    severity: warn
+  - rule_id: VAL-editor-neovim-05
+    assertion: Insert-mode relative-path insertion exists.
+    method: Inspect keymap or plugin config for insert mapping.
+    pass_condition: Mapping exists and inserts project-relative paths.
+    severity: warn
+  - rule_id: VAL-editor-neovim-06
+    assertion: Path yank keymaps exist.
+    method: Inspect keymaps for ypf, ypl, ypd, ypF, ypL, and ypD semantics.
+    pass_condition: All path yank actions are mapped and documented.
+    severity: warn
+os_package_mapping:
+  - canonical_capability: neovim
+    macos_package_id: neovim
+    arch_package_id: neovim
+    notes: Required.
+  - canonical_capability: lazyvim-baseline
+    macos_package_id: n-a
+    arch_package_id: n-a
+    notes: Config-level capability.
+  - canonical_capability: markdown-preview-backend
+    macos_package_id: plugin-managed
+    arch_package_id: plugin-managed
+    notes: Validate behavior, not installer choice.
+known_exceptions:
+  - id: EXC-editor-neovim-01
+    statement: Temporary plugin sync failures are noncompliant only if capability remains unavailable after retry.
+    compliance_impact: warn
+---
 # Neovim Editor Capability
 
-## Capability ID
-`CAP-editor-neovim`
-
-## Status
-`required`
-
-## Intentions
-- Neovim is present and usable as the default advanced editor.
-- Configuration is LazyVim-based.
-- File discovery UX includes hidden and ignored files by default in explorer/picker workflows.
-- Markdown preview capability exists.
-- Insert-mode path insertion capability exists for project-relative paths.
-- Path yanking shortcuts exist for relative and absolute file/line/directory outputs.
-
-## Validation Rules
-- `Rule ID`: `VAL-editor-neovim-01`
-  - `Assertion`: Neovim binary is installed and launches.
-  - `Method`: run `nvim --version`.
-  - `Pass`: command succeeds and reports a version.
-  - `Severity`: `blocker`
-- `Rule ID`: `VAL-editor-neovim-02`
-  - `Assertion`: LazyVim baseline is active.
-  - `Method`: inspect config for LazyVim bootstrap/import.
-  - `Pass`: config references LazyVim plugin set as base.
-  - `Severity`: `blocker`
-- `Rule ID`: `VAL-editor-neovim-03`
-  - `Assertion`: Hidden/ignored files are visible in picker/explorer workflows.
-  - `Method`: inspect picker/explorer config state.
-  - `Pass`: hidden and ignored visibility toggles default to enabled.
-  - `Severity`: `warn`
-- `Rule ID`: `VAL-editor-neovim-04`
-  - `Assertion`: Markdown preview capability is available.
-  - `Method`: validate markdown-preview plugin/command presence.
-  - `Pass`: markdown preview command namespace is registered.
-  - `Severity`: `warn`
-- `Rule ID`: `VAL-editor-neovim-05`
-  - `Assertion`: Insert-mode relative-path insertion exists.
-  - `Method`: inspect keymap/plugin config for insert mapping.
-  - `Pass`: mapping exists and inserts project-relative paths.
-  - `Severity`: `warn`
-- `Rule ID`: `VAL-editor-neovim-06`
-  - `Assertion`: Path yank keymaps exist.
-  - `Method`: inspect keymaps for `ypf`, `ypl`, `ypd`, `ypF`, `ypL`, `ypD` semantics.
-  - `Pass`: all path yank actions are mapped and documented.
-  - `Severity`: `warn`
-
-## OS Package Mapping
-| Canonical Capability | macOS Package ID | Arch Package ID | Notes |
-| --- | --- | --- | --- |
-| Neovim | `neovim` | `neovim` | Required |
-| LazyVim baseline | N/A | N/A | Config-level capability, not package |
-| Markdown preview backend deps | bundled/npm as plugin requires | bundled/npm as plugin requires | Validate behavior, not installer choice |
-
-## Known Exceptions
-- Temporary plugin-manager sync failures are noncompliant only if capability remains unavailable after retry.
+This capability defines observable Neovim behavior outcomes rather than a specific plugin manager workflow.

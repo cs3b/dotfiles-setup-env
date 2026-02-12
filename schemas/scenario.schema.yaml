@@ -1,0 +1,11 @@
+kind: schema
+name: scenarios
+required:
+  - kind
+  - scenarios
+allowed:
+  - kind
+  - scenarios
+enums:
+  kind:
+    - scenarios

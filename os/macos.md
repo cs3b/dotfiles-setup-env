@@ -1,29 +1,27 @@
+---
+kind: os
+os_id: OS-macos
+rules:
+  - rule_id: VAL-os-macos-01
+    assertion: Homebrew is available.
+    method: Run brew --version.
+    pass_condition: Command succeeds.
+    severity: blocker
+  - rule_id: VAL-os-macos-02
+    assertion: Homebrew prefix matches intended default.
+    method: Run brew --prefix.
+    pass_condition: Output is /opt/homebrew unless documented exception exists.
+    severity: warn
+  - rule_id: VAL-os-macos-03
+    assertion: Managed shell config exports expected Homebrew paths.
+    method: Inspect shell startup environment.
+    pass_condition: PATH contains Homebrew bin and sbin entries.
+    severity: warn
+known_exceptions:
+  - id: EXC-os-macos-01
+    statement: Intel macOS hosts may use /usr/local and must record architecture context.
+    compliance_impact: warn
+---
 # macOS Platform Constraints
 
-## OS ID
-`OS-macos`
-
-## Intentions
-- Package source of record is Homebrew for most userland CLI tools.
-- Homebrew prefix follows Apple Silicon default (`/opt/homebrew`) unless intentionally overridden.
-- Shell and runtime manager integration work in login and noninteractive contexts.
-
-## Validation Rules
-- `Rule ID`: `VAL-os-macos-01`
-  - `Assertion`: Homebrew is available.
-  - `Method`: run `brew --version`.
-  - `Pass`: command succeeds.
-  - `Severity`: `blocker`
-- `Rule ID`: `VAL-os-macos-02`
-  - `Assertion`: Homebrew prefix matches intended default.
-  - `Method`: run `brew --prefix`.
-  - `Pass`: output is `/opt/homebrew` unless documented exception exists.
-  - `Severity`: `warn`
-- `Rule ID`: `VAL-os-macos-03`
-  - `Assertion`: Managed shell config exports expected Homebrew paths.
-  - `Method`: inspect shell startup environment.
-  - `Pass`: `PATH` contains Homebrew bin/sbin entries.
-  - `Severity`: `warn`
-
-## Known Exceptions
-- Intel macOS hosts may use `/usr/local`; mark as explicit exception with architecture note.
+Defines macOS-specific capability checks and path assumptions.

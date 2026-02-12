@@ -1,0 +1,28 @@
+kind: schema
+name: capability
+required:
+  - kind
+  - capability_id
+  - status
+  - intentions
+  - rules
+  - os_package_mapping
+  - known_exceptions
+allowed:
+  - kind
+  - capability_id
+  - status
+  - intentions
+  - rules
+  - os_package_mapping
+  - known_exceptions
+enums:
+  kind:
+    - capability
+  rule_severity:
+    - blocker
+    - warn
+  exception_compliance_impact:
+    - none
+    - warn
+    - blocker-waivable

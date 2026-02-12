@@ -1,71 +1,77 @@
+---
+kind: capability
+capability_id: CAP-shell
+status: required
+intentions:
+  - Primary interactive shell is configured and usable (fish, zsh, or bash).
+  - Shell startup is noninteractive-safe.
+  - Runtime manager activation is available in shell sessions.
+  - Smart directory jump capability is available.
+  - Prompt customization capability is available.
+  - Cross-shell shortcut behavior parity exists for required Claude shortcuts.
+rules:
+  - rule_id: VAL-shell-01
+    assertion: Primary shell launches and executes noninteractive command.
+    method: Run <shell> -lc 'echo ok'.
+    pass_condition: Output contains ok and exit code is 0.
+    severity: blocker
+  - rule_id: VAL-shell-02
+    assertion: Runtime manager activation is effective in shell context.
+    method: Run <shell> -lc 'command -v mise || command -v asdf || command -v rtx'.
+    pass_condition: At least one runtime-manager binary is resolvable.
+    severity: blocker
+  - rule_id: VAL-shell-03
+    assertion: Smart directory jump capability is available.
+    method: Run <shell> -lc 'command -v zoxide || command -v z'.
+    pass_condition: zoxide or equivalent jump command exists.
+    severity: warn
+  - rule_id: VAL-shell-04
+    assertion: Prompt customization capability is present.
+    method: Run <shell> -lc 'command -v starship || test -n "$PS1"'.
+    pass_condition: Starship exists or prompt is explicitly customized.
+    severity: warn
+  - rule_id: VAL-shell-05
+    assertion: Core Claude shortcut cc resolves to claude invocation with permissions flag.
+    method: Inspect shell abbreviation/alias/function registry.
+    pass_condition: cc expands to claude --dangerously-skip-permissions equivalent.
+    severity: blocker
+  - rule_id: VAL-shell-06
+    assertion: Extended Claude task shortcuts are defined.
+    method: Verify cc-on, cc-lcp, cc-wt, cc-rt, cc-pt, cc-ft definitions.
+    pass_condition: All listed shortcuts resolve to intended claude invocation text.
+    severity: warn
+  - rule_id: VAL-shell-07
+    assertion: Cross-shell shortcut behavior parity exists for required cc shortcuts.
+    method: Inspect alias/function/abbr/readline mappings for active shell.
+    pass_condition: Required shortcuts are reachable and behaviorally equivalent.
+    severity: blocker
+  - rule_id: VAL-shell-08
+    assertion: Smart directory-jump behavior works in shell context.
+    method: Verify zoxide integration or equivalent smart-jump behavior.
+    pass_condition: Smart-jump capability is callable from shell session.
+    severity: warn
+os_package_mapping:
+  - canonical_capability: Primary shell
+    macos_package_id: fish
+    arch_package_id: fish
+    notes: zsh or bash are acceptable if rules still pass.
+  - canonical_capability: Prompt engine
+    macos_package_id: starship
+    arch_package_id: starship
+    notes: Optional if equivalent prompt customization exists.
+  - canonical_capability: Directory jumper
+    macos_package_id: zoxide
+    arch_package_id: zoxide
+    notes: Optional but recommended.
+  - canonical_capability: Claude CLI
+    macos_package_id: claude-code
+    arch_package_id: claude-code-bin
+    notes: Distribution name may vary on Arch.
+known_exceptions:
+  - id: EXC-shell-01
+    statement: If Claude CLI is intentionally absent, VAL-shell-05 may be waived only when AI workflow profile is disabled.
+    compliance_impact: blocker-waivable
+---
 # Shell Capability
 
-## Capability ID
-`CAP-shell`
-
-## Status
-`required`
-
-## Intentions
-- A primary interactive shell is configured and usable (`fish`, `zsh`, or `bash`).
-- Shell startup is noninteractive-safe (no blocking prompts or interactive-only failures in noninteractive runs).
-- Runtime manager activation is available in shell sessions.
-- Smart directory jump capability is available.
-- Prompt customization capability is available.
-- Cross-shell behavior parity is required: Bash/Zsh/Fish must provide equivalent shortcut behavior even if implementation differs (alias/function/abbr/readline).
-- Claude workflow abbreviations are available independent of shell implementation style (alias/function/abbr), with equivalent behavior:
-  - `cc`, `ccp`, `ccc`, `ccr`, `cct`
-  - `cc-on`, `cc-lcp`, `cc-wt`, `cc-rt`, `cc-pt`, `cc-ft`
-
-## Validation Rules
-- `Rule ID`: `VAL-shell-01`
-  - `Assertion`: Primary shell launches and executes noninteractive command.
-  - `Method`: run `<shell> -lc 'echo ok'`.
-  - `Pass`: output contains `ok`, exit code `0`.
-  - `Severity`: `blocker`
-- `Rule ID`: `VAL-shell-02`
-  - `Assertion`: Runtime manager activation is effective in shell context.
-  - `Method`: run `<shell> -lc 'command -v mise || command -v asdf || command -v rtx'`.
-  - `Pass`: at least one runtime-manager binary is resolvable.
-  - `Severity`: `blocker`
-- `Rule ID`: `VAL-shell-03`
-  - `Assertion`: Smart directory jump capability is available.
-  - `Method`: run `<shell> -lc 'command -v zoxide || command -v z'`.
-  - `Pass`: `zoxide` or equivalent jump command exists.
-  - `Severity`: `warn`
-- `Rule ID`: `VAL-shell-04`
-  - `Assertion`: Prompt customization capability is present.
-  - `Method`: run `<shell> -lc 'command -v starship || test -n "$PS1"'`.
-  - `Pass`: starship exists or prompt is explicitly customized.
-  - `Severity`: `warn`
-- `Rule ID`: `VAL-shell-05`
-  - `Assertion`: Core Claude abbreviation `cc` resolves to `claude` invocation with permission flag.
-  - `Method`: inspect shell abbreviation/alias/function registry.
-  - `Pass`: `cc` expands to `claude --dangerously-skip-permissions ...` equivalent.
-  - `Severity`: `blocker`
-- `Rule ID`: `VAL-shell-06`
-  - `Assertion`: Extended Claude task shortcuts are all defined.
-  - `Method`: verify definitions for `cc-on`, `cc-lcp`, `cc-wt`, `cc-rt`, `cc-pt`, `cc-ft`.
-  - `Pass`: all listed shortcuts resolve to `claude --dangerously-skip-permissions` with intended task text.
-  - `Severity`: `warn`
-- `Rule ID`: `VAL-shell-07`
-  - `Assertion`: Cross-shell shortcut behavior parity exists for required `cc*` shortcuts.
-  - `Method`: inspect alias/function/abbr/readline mappings for active shell.
-  - `Pass`: all required shortcuts are reachable and behaviorally equivalent on the active shell.
-  - `Severity`: `blocker`
-- `Rule ID`: `VAL-shell-08`
-  - `Assertion`: Smart directory-jump behavior works in shell context.
-  - `Method`: verify `zoxide` integration or equivalent smart-jump command behavior.
-  - `Pass`: smart-jump capability is callable from shell session.
-  - `Severity`: `warn`
-
-## OS Package Mapping
-| Canonical Capability | macOS Package ID | Arch Package ID | Notes |
-| --- | --- | --- | --- |
-| Primary shell | `fish` (brew) | `fish` (pacman) | zsh/bash acceptable as primary if rules still pass |
-| Prompt engine | `starship` (brew) | `starship` (pacman) | Optional if equivalent prompt customizations exist |
-| Directory jumper | `zoxide` (brew) | `zoxide` (pacman) | Optional but recommended |
-| Claude CLI | `claude-code` (cask) | `claude-code-bin` (AUR, typical) | May be distributed under different AUR name |
-
-## Known Exceptions
-- If Claude CLI is intentionally absent, `VAL-shell-05` may be waived only when AI workflow profile is disabled.
+This capability defines interactive shell behavior and shortcut parity requirements across fish, zsh, and bash.

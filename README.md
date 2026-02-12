@@ -1,33 +1,44 @@
-# Setup Environment Spec
+# setup-env
 
-## Purpose
-This folder defines environment requirements as:
-1. Intentions (what must be true).
-2. Validation rules (how to verify truth).
+Specification-first environment contract for developer setup on macOS and Arch Linux.
 
-It is implementation-agnostic. It does not prescribe installation or configuration procedures.
+This repository stores:
+1. Human-readable intentions in Markdown.
+2. Machine-readable contract data in YAML frontmatter.
+3. Deterministic validation rules and policy waivers.
 
-## Scope
-- Platforms: macOS and Arch Linux.
-- Shells: fish, zsh, bash.
-- Editor baseline: LazyVim-based Neovim behavior.
-- Tooling baseline: CLI capabilities required for daily workflows.
+It does not store provisioning scripts or secret values.
 
 ## Reading Order
-1. `SPEC_CONTRACT.md`
-2. `profiles/core.md`
+1. `CONTRACT.md`
+2. `profiles/*.md`
 3. `capabilities/*.md`
-4. `os/macos.md` or `os/arch.md`
+4. `os/*.md`
 5. `validation/scenarios.md`
 6. `validation/checklist.md`
+7. `contracts/runner-contract.yaml`
 
-## Compliance Policy
-- `core` profile rules are mandatory.
-- `optional:*` profile rules are evaluated only when that profile is enabled.
-- `blocker` failures mean environment is not compliant.
-- `warn` failures mean environment is compliant with caveats.
+## Authoring Model
+- Every contract markdown file starts with YAML frontmatter.
+- Frontmatter is canonical for tooling.
+- Markdown body explains intent and operational notes.
+
+## Validation
+Run local contract checks:
+
+```bash
+tools/validate-contract.sh
+```
+
+What is enforced:
+- schema/shape validity
+- ID uniqueness
+- cross-file reference integrity
+- checklist coverage for every rule
+- waiver correctness and expiry policy
+- generated index parity (`contracts/index.yaml`)
 
 ## Non-Goals
-- No step-by-step setup instructions.
-- No secret management instructions.
-- No implementation-specific plugin manager or package manager scripts.
+- No installation or bootstrap scripts.
+- No secret distribution flow.
+- No implementation-specific plugin manager instructions.

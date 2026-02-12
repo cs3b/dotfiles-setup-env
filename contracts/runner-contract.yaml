@@ -1,0 +1,33 @@
+contract_snapshot: v0
+
+runner_input:
+  required:
+    - os_id
+    - enabled_profiles
+  optional:
+    - waiver_ids
+  types:
+    os_id: string
+    enabled_profiles: string_array
+    waiver_ids: string_array
+
+runner_output:
+  schema: schemas/runner-output.schema.yaml
+  statuses:
+    - pass
+    - warn
+    - fail
+    - waived
+    - not_applicable
+
+compliance_policy:
+  compliant_when:
+    - all non-waived blocker rules pass
+  compliant_with_caveats_when:
+    - only warn rules fail
+  non_compliant_when:
+    - any non-waived blocker rule fails
+
+evidence_policy:
+  - include command and observation metadata only
+  - do not log secrets or plaintext credentials

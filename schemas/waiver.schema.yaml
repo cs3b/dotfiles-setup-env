@@ -1,0 +1,11 @@
+kind: schema
+name: waivers
+required:
+  - waivers
+allowed:
+  - waivers
+enums:
+  status:
+    - active
+    - expired
+    - revoked

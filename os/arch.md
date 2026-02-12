@@ -1,29 +1,27 @@
+---
+kind: os
+os_id: OS-arch
+rules:
+  - rule_id: VAL-os-arch-01
+    assertion: Arch package tooling is available.
+    method: Run pacman --version.
+    pass_condition: Command succeeds.
+    severity: blocker
+  - rule_id: VAL-os-arch-02
+    assertion: Core packages resolve via pacman or AUR mapping.
+    method: For each mapped package, verify install state or binary presence.
+    pass_condition: All required core capabilities are satisfied.
+    severity: blocker
+  - rule_id: VAL-os-arch-03
+    assertion: Shell startup preserves runtime manager and path behavior.
+    method: Run shell noninteractive probes.
+    pass_condition: Runtime manager and required binaries resolve in shell context.
+    severity: warn
+known_exceptions:
+  - id: EXC-os-arch-01
+    statement: cask-only macOS tools may require AUR or community alternatives; validate capability outcome over exact source.
+    compliance_impact: warn
+---
 # Arch Linux Platform Constraints
 
-## OS ID
-`OS-arch`
-
-## Intentions
-- Package source of record is pacman for official packages and AUR for missing tools.
-- Runtime manager and shell capabilities match macOS behavior expectations.
-- Any macOS-specific assumptions are replaced with Arch equivalents.
-
-## Validation Rules
-- `Rule ID`: `VAL-os-arch-01`
-  - `Assertion`: Arch package tooling is available.
-  - `Method`: run `pacman --version`.
-  - `Pass`: command succeeds.
-  - `Severity`: `blocker`
-- `Rule ID`: `VAL-os-arch-02`
-  - `Assertion`: Core packages resolve via pacman or AUR mapping.
-  - `Method`: for each mapped package, verify install state or binary presence.
-  - `Pass`: all required core capabilities are satisfied.
-  - `Severity`: `blocker`
-- `Rule ID`: `VAL-os-arch-03`
-  - `Assertion`: Shell startup preserves runtime manager and path behavior.
-  - `Method`: run shell noninteractive probes.
-  - `Pass`: runtime manager and required binaries resolve in shell context.
-  - `Severity`: `warn`
-
-## Known Exceptions
-- Package IDs for cask-only macOS tools may require AUR/community alternatives; validate capability outcome rather than exact source.
+Defines Arch-specific package and shell integration expectations.

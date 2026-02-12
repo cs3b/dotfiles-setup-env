@@ -1,59 +1,74 @@
+---
+kind: capability
+capability_id: CAP-version-manager
+status: required
+intentions:
+  - A runtime manager controls language runtime versions consistently across shells.
+  - Ruby and Bun runtimes are managed declaratively as default environments.
+  - Shim or equivalent indirection makes managed binaries resolvable on PATH.
+  - Home-level runtime manager config is source of truth for default runtimes.
+  - Bun-managed global AI CLIs include gemini, opencode, and pi-mono.
+rules:
+  - rule_id: VAL-version-manager-01
+    assertion: Runtime manager binary exists.
+    method: Verify mise command or declared equivalent.
+    pass_condition: Runtime manager command is available.
+    severity: blocker
+  - rule_id: VAL-version-manager-02
+    assertion: Ruby runtime is managed and available.
+    method: Check manager tool list and ruby --version.
+    pass_condition: Ruby is declared and executable.
+    severity: blocker
+  - rule_id: VAL-version-manager-03
+    assertion: Bun runtime is managed and available.
+    method: Check manager tool list and bun --version.
+    pass_condition: Bun is declared and executable.
+    severity: blocker
+  - rule_id: VAL-version-manager-04
+    assertion: Shell sessions expose managed shims.
+    method: Inspect PATH for manager shim directory and resolve managed binaries.
+    pass_condition: Managed runtime binaries resolve to shim or manager path.
+    severity: warn
+  - rule_id: VAL-version-manager-05
+    assertion: Home-level mise global config exists and declares default runtimes.
+    method: Inspect ~/.config/mise/config.toml.
+    pass_condition: Config exists and includes ruby and bun runtime entries.
+    severity: blocker
+  - rule_id: VAL-version-manager-06
+    assertion: Bun-managed global AI CLIs are available.
+    method: Verify gemini, opencode, and pi-mono commands and resolution paths.
+    pass_condition: All commands resolve from bun or mise managed runtime paths.
+    severity: blocker
+os_package_mapping:
+  - canonical_capability: runtime-manager
+    macos_package_id: mise
+    arch_package_id: mise
+    notes: Equivalent manager allowed if declared.
+  - canonical_capability: ruby-runtime
+    macos_package_id: manager-provisioned
+    arch_package_id: manager-provisioned
+    notes: Validate by runtime availability.
+  - canonical_capability: bun-runtime
+    macos_package_id: manager-provisioned
+    arch_package_id: manager-provisioned
+    notes: Validate by runtime availability.
+  - canonical_capability: gemini-cli
+    macos_package_id: bun-global
+    arch_package_id: bun-global
+    notes: Validate command capability, not registry name.
+  - canonical_capability: opencode-cli
+    macos_package_id: bun-global
+    arch_package_id: bun-global
+    notes: Validate command capability, not registry name.
+  - canonical_capability: pi-mono-cli
+    macos_package_id: bun-global
+    arch_package_id: bun-global
+    notes: Validate command capability, not registry name.
+known_exceptions:
+  - id: EXC-version-manager-01
+    statement: Alternative runtime managers are allowed if replacement is declared and validation semantics are preserved.
+    compliance_impact: warn
+---
 # Runtime Version Manager Capability
 
-## Capability ID
-`CAP-version-manager`
-
-## Status
-`required`
-
-## Intentions
-- A runtime manager controls language runtime versions consistently across shells.
-- Ruby and Bun runtimes are managed declaratively as default environments.
-- Shim or equivalent indirection is available so runtime-selected binaries resolve on `PATH`.
-- Home-level runtime manager config is the source of truth for default runtimes.
-- Bun-managed global CLI tools include `gemini`, `opencode`, and `pi-mono`.
-
-## Validation Rules
-- `Rule ID`: `VAL-version-manager-01`
-  - `Assertion`: Runtime manager binary exists.
-  - `Method`: verify `mise` (or declared equivalent) command.
-  - `Pass`: command is available.
-  - `Severity`: `blocker`
-- `Rule ID`: `VAL-version-manager-02`
-  - `Assertion`: Ruby runtime is managed and available.
-  - `Method`: check runtime-manager tool list and `ruby --version`.
-  - `Pass`: Ruby is declared and executable.
-  - `Severity`: `blocker`
-- `Rule ID`: `VAL-version-manager-03`
-  - `Assertion`: Bun runtime is managed and available.
-  - `Method`: check runtime-manager tool list and `bun --version`.
-  - `Pass`: Bun is declared and executable.
-  - `Severity`: `blocker`
-- `Rule ID`: `VAL-version-manager-04`
-  - `Assertion`: Shell sessions expose managed shims.
-  - `Method`: inspect `PATH` for manager shim directory and resolve managed binaries.
-  - `Pass`: managed runtime binaries resolve to shim/manager path.
-  - `Severity`: `warn`
-- `Rule ID`: `VAL-version-manager-05`
-  - `Assertion`: Home-level mise global config exists and declares default runtimes.
-  - `Method`: inspect `~/.config/mise/config.toml`.
-  - `Pass`: config file exists and includes declarative runtime entries for `ruby` and `bun`.
-  - `Severity`: `blocker`
-- `Rule ID`: `VAL-version-manager-06`
-  - `Assertion`: Bun-managed global AI CLIs are available.
-  - `Method`: verify `gemini`, `opencode`, and `pi-mono` commands; inspect command resolution path.
-  - `Pass`: all three commands resolve from bun/mise-managed global runtime paths.
-  - `Severity`: `blocker`
-
-## OS Package Mapping
-| Canonical Capability | macOS Package ID | Arch Package ID | Notes |
-| --- | --- | --- | --- |
-| Runtime manager | `mise` | `mise` | Equivalent manager allowed if declared |
-| Ruby runtime | manager-provisioned | manager-provisioned | Validate via runtime availability |
-| Bun runtime | manager-provisioned | manager-provisioned | Validate via runtime availability |
-| Gemini CLI (bun global) | bun-managed global package | bun-managed global package | Validate command capability, not package registry naming |
-| OpenCode CLI (bun global) | bun-managed global package | bun-managed global package | Validate command capability, not package registry naming |
-| pi-mono CLI (bun global) | bun-managed global package | bun-managed global package | Validate command capability, not package registry naming |
-
-## Known Exceptions
-- If an alternative runtime manager is used, spec consumer must declare replacement and preserve validation semantics.
+This capability defines runtime management outcomes and global CLI availability.

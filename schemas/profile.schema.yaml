@@ -1,0 +1,15 @@
+kind: schema
+name: profile
+required:
+  - kind
+  - profile_id
+  - included_capabilities
+  - validation_policy
+allowed:
+  - kind
+  - profile_id
+  - included_capabilities
+  - validation_policy
+enums:
+  kind:
+    - profile
