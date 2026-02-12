@@ -11,6 +11,7 @@
 - Tool names are discoverable on `PATH`.
 - Equivalent alternatives are acceptable only if they satisfy the same operational capability.
 - Native-installed AI coding CLIs are present for `codex` and `claude`.
+- Git bootstrap helper command `gh-init` is available for initializing repositories with a baseline `.gitignore`.
 
 ## Validation Rules
 - `Rule ID`: `VAL-package-tooling-01`
@@ -38,6 +39,11 @@
   - `Method`: verify `codex --version` and `claude --version` (or equivalent version/help probe).
   - `Pass`: both commands are available from native system install paths.
   - `Severity`: `blocker`
+- `Rule ID`: `VAL-package-tooling-06`
+  - `Assertion`: Git bootstrap helper `gh-init` is available.
+  - `Method`: verify `command -v gh-init`.
+  - `Pass`: command resolves on `PATH`.
+  - `Severity`: `warn`
 
 ## OS Package Mapping
 | Canonical Capability | macOS Package ID | Arch Package ID | Notes |
@@ -63,6 +69,7 @@
 | git lfs | `git-lfs` | `git-lfs` | Required |
 | Codex CLI | `codex` (cask/formula as distributed) | `codex` (AUR/community package name may vary) | Required; native install |
 | Claude Code CLI | `claude-code` (cask) | `claude-code`/`claude-code-bin` (AUR name may vary) | Required; native install |
+| gh-init helper | custom script/tooling | custom script/tooling | Recommended; validates repository bootstrap workflow |
 
 ## Known Exceptions
 - If a tool is replaced by a functionally equivalent binary, record equivalence rationale and update validation probe accordingly.

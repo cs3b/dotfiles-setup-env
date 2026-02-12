@@ -32,6 +32,7 @@
 - `VAL-shell-06`
 - `VAL-shell-08`
 - `VAL-package-tooling-04`
+- `VAL-package-tooling-06`
 - `VAL-editor-neovim-03`
 - `VAL-editor-neovim-04`
 - `VAL-editor-neovim-05`
