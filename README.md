@@ -1,47 +1,57 @@
 # setup-env
 
-Specification-first environment contract for developer setup on macOS and Arch Linux.
+System setup as a product:
+- Markdown + YAML contracts for machine setup intent and verification.
+- Agent skills that work across tools, prewired for Codex and Claude.
 
-This repository stores:
-1. Human-readable intentions in Markdown.
-2. Machine-readable contract data in YAML frontmatter.
-3. Deterministic validation rules and policy waivers.
+## Why this exists
+Most dotfiles repos are scripts and one-off shell tweaks. This repo is different:
+- Define setup as a clear contract (what must be true).
+- Verify compliance deterministically (what passes and fails).
+- Keep instructions portable across machines and agents.
 
-It does not store provisioning scripts or secret values.
+## Value
+- Single source of truth for environment requirements.
+- Contract-first model: human-readable docs + machine-validated structure.
+- Repeatable verification via `tools/validate-contract.sh`.
+- Shared skill catalog under `.agent/skills` with repo-local links:
+  - `.codex/skills -> ../.agent/skills`
+  - `.claude/skills -> ../.agent/skills`
+
+## Quick Start
+Start here: [`STARTHERE.MD`](STARTHERE.MD)
 
 ## Demo
 ![setup-env demo](assets/setup-env-demo.gif)
 
-## Reading Order
-1. `CONTRACT.md`
-2. `profiles/*.md`
-3. `capabilities/*.md`
-4. `os/*.md`
-5. `validation/scenarios.md`
-6. `validation/checklist.md`
-7. `contracts/runner-contract.yaml`
+## What is in this repo
+- `capabilities/`: capability contracts and rule definitions.
+- `profiles/`: composed capability sets (core and optional).
+- `os/`: platform-specific constraints.
+- `validation/`: scenarios, checklist, and waivers.
+- `schemas/`: contract schema definitions.
+- `contracts/`: generated contract index and runner contract.
+- `tools/`: validation and index-generation scripts.
+- `.agent/skills/`: reusable cross-agent skills.
 
 ## Authoring Model
 - Every contract markdown file starts with YAML frontmatter.
-- Frontmatter is canonical for tooling.
-- Markdown body explains intent and operational notes.
+- YAML frontmatter is canonical for tooling.
+- Markdown body carries explanation and operational context.
 
 ## Validation
-Run local contract checks:
-
 ```bash
 tools/validate-contract.sh
 ```
 
-What is enforced:
-- schema/shape validity
-- ID uniqueness
-- cross-file reference integrity
-- checklist coverage for every rule
-- waiver correctness and expiry policy
+Enforced checks:
+- schema validity
+- unique IDs
+- cross-file references
+- rule coverage in checklist
+- waiver integrity and expiry
 - generated index parity (`contracts/index.yaml`)
 
 ## Non-Goals
-- No installation or bootstrap scripts.
-- No secret distribution flow.
-- No implementation-specific plugin manager instructions.
+- Provisioning/bootstrap scripts in this repo.
+- Secret values in tracked files.
