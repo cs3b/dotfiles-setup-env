@@ -5,6 +5,7 @@ status: required
 intentions:
   - Primary interactive shell is configured and usable (fish, zsh, or bash).
   - Shell startup is noninteractive-safe.
+  - Login-noninteractive bash initialization chain keeps runtime activation reachable.
   - Runtime manager activation is available in shell sessions.
   - Smart directory jump capability is available.
   - Prompt customization capability is available.
@@ -55,6 +56,16 @@ rules:
     assertion: Core git shortcuts are defined with explicit mappings.
     method: Inspect alias/function/abbr/readline mappings for active shell.
     pass_condition: gs -> git status -sb; ga -> git add; gaa -> git add --all; gd -> git diff; gds -> git diff --staged; gl -> git log --oneline --graph --decorate; gll -> git pull; gb -> git branch; gco -> git checkout; gsw -> git switch; gr -> git rebase; gri -> git rebase -i; grom -> git rebase origin/main; gpl -> git pull --ff-only; gp -> git push; gpf -> git push --force-with-lease; gpfl -> git add && git push --force-with-lease; gc resolves to ace-git-commit when available, otherwise git commit.
+    severity: warn
+  - rule_id: VAL-shell-10
+    assertion: Fish runtime probe executes cleanly and required shell capabilities resolve.
+    method: Run fish -lc probes and inspect fish abbreviation registry.
+    pass_condition: fish -lc exits successfully, required commands resolve, and required cc shortcuts are present in fish context.
+    severity: blocker
+  - rule_id: VAL-shell-11
+    assertion: Bash login-noninteractive initialization chain preserves runtime activation.
+    method: Run bash -lc probes and inspect .bash_profile -> .bashrc sourcing behavior.
+    pass_condition: bash -lc resolves runtime manager and managed binaries even when .bashrc contains interactive guards.
     severity: warn
 os_package_mapping:
   - canonical_capability: Primary shell

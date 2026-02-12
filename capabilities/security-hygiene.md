@@ -9,8 +9,8 @@ intentions:
 rules:
   - rule_id: VAL-security-hygiene-01
     assertion: No token-like secrets are present in tracked repository files.
-    method: Scan tracked files for token prefixes and patterns such as github_pat_, ghp_, and sk-ant-.
-    pass_condition: No matches in tracked files.
+    method: Scan tracked non-contract files for token prefixes and patterns such as github_pat_, ghp_, and sk-ant-; exclude contract documentation paths.
+    pass_condition: No matches are found outside excluded contract docs (for example capabilities/, profiles/, os/, validation/ markdown docs).
     severity: blocker
   - rule_id: VAL-security-hygiene-02
     assertion: Tracked shell startup files do not assign literal secret values.

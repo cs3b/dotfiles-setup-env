@@ -17,13 +17,23 @@ Use this skill when the user wants to know what to change on the machine to matc
 - Current system status.
 
 ## Workflow
-1. Evaluate rule status: pass, warn, fail, not-applicable.
-2. Build prioritized remediation plan:
+1. Run mandatory preflight checks before planning any mutation:
+   - verify package names exist before install commands are proposed
+   - verify shell init chain coverage for login-noninteractive probes (`.bash_profile -> .bashrc`)
+   - verify headless-safe plugin build methods for Neovim dependencies
+2. Evaluate rule status: pass, warn, fail, not-applicable.
+3. Build prioritized remediation plan:
    - blocker failures first
    - warn failures second
-3. Provide command-level suggestions and risk notes.
-4. Default behavior: proposal only.
-5. If explicitly requested, execute selected steps and re-verify.
+4. Build execution batches by risk class:
+   - safe local edits and reads in one batch
+   - network installs in isolated batches
+   - one global CLI package per install command
+5. Provide command-level suggestions and risk notes.
+6. Default behavior: proposal only.
+7. If explicitly requested, execute selected steps and run two-pass verification:
+   - pass 1: full probe run
+   - pass 2: re-run probes that returned empty or ambiguous output
 
 ## Output Contract
 - Ordered remediation steps.
@@ -34,6 +44,8 @@ Use this skill when the user wants to know what to change on the machine to matc
 - Never mutate by default.
 - Request confirmation before privileged or destructive actions.
 - Re-check status after every executed batch.
+- Never mix high-risk network installs with unrelated file writes in the same parallel batch.
+- Treat package-name and command-name mismatches as blocking planning errors until clarified.
 
 ## References
 - Prioritization: `references/remediation-priority.md`

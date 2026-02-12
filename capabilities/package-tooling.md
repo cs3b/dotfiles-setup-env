@@ -8,6 +8,7 @@ intentions:
   - Equivalent alternatives are acceptable only when they preserve operational capability.
   - Native-installed AI coding CLIs are present for codex and claude.
   - Git bootstrap helper command gh-init is available.
+  - Package names and command names are documented separately when they differ.
 rules:
   - rule_id: VAL-package-tooling-01
     assertion: Search and file-discovery tools exist.
@@ -131,6 +132,9 @@ os_package_mapping:
 known_exceptions:
   - id: EXC-package-tooling-01
     statement: Functionally equivalent binaries may replace listed tools if validation probes are updated.
+    compliance_impact: warn
+  - id: EXC-package-tooling-02
+    statement: Registry package names may differ from runtime command names and must be documented explicitly (for example opencode-ai package provides opencode command).
     compliance_impact: warn
 ---
 # Package Tooling Capability

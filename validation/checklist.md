@@ -5,6 +5,7 @@ core_blockers:
   - VAL-shell-02
   - VAL-shell-05
   - VAL-shell-07
+  - VAL-shell-10
   - VAL-package-tooling-01
   - VAL-package-tooling-02
   - VAL-package-tooling-03
@@ -31,6 +32,7 @@ core_warns:
   - VAL-shell-06
   - VAL-shell-08
   - VAL-shell-09
+  - VAL-shell-11
   - VAL-package-tooling-04
   - VAL-package-tooling-06
   - VAL-editor-neovim-03

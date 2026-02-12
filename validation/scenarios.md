@@ -16,11 +16,21 @@ scenarios:
       - PROFILE-core
     platform: any
     expected: shell shortcut and smart-jump parity holds across fish zsh bash
+  - scenario_id: SCN-shell-init-chain
+    profiles:
+      - PROFILE-core
+    platform: any
+    expected: fish -lc probes succeed and bash login-noninteractive init chain preserves runtime activation
   - scenario_id: SCN-neovim-behavior
     profiles:
       - PROFILE-core
     platform: any
     expected: LazyVim baseline plus hidden-file visibility markdown-preview and path-yank behavior pass
+  - scenario_id: SCN-headless-markdown-preview-build
+    profiles:
+      - PROFILE-core
+    platform: any
+    expected: markdown-preview build method is headless-safe and does not depend on interactive Neovim runtime functions
   - scenario_id: SCN-optional-profile-disabled
     profiles:
       - PROFILE-core

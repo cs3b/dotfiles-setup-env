@@ -27,8 +27,8 @@ rules:
     severity: warn
   - rule_id: VAL-editor-neovim-04
     assertion: Markdown preview capability is available.
-    method: Validate markdown-preview plugin or command presence.
-    pass_condition: Markdown preview command namespace is registered.
+    method: Validate markdown-preview plugin presence and inspect build command for headless-safe install semantics.
+    pass_condition: Markdown preview command namespace is registered and plugin build uses a noninteractive-safe command (for example cd app && npx --yes yarn install).
     severity: warn
   - rule_id: VAL-editor-neovim-05
     assertion: Insert-mode relative-path insertion exists.

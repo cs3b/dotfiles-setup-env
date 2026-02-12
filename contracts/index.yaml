@@ -64,6 +64,8 @@ capabilities:
   - VAL-shell-07
   - VAL-shell-08
   - VAL-shell-09
+  - VAL-shell-10
+  - VAL-shell-11
 - id: CAP-ssh-git-access
   path: capabilities/ssh-git-access.md
   status: required
@@ -124,10 +126,12 @@ validation:
     scenario_ids:
     - SCN-fresh-arch-core
     - SCN-fresh-macos-core
+    - SCN-headless-markdown-preview-build
     - SCN-neovim-behavior
     - SCN-optional-ai-coding-enabled
     - SCN-optional-profile-disabled
     - SCN-security-hygiene-scan
+    - SCN-shell-init-chain
     - SCN-shell-portability
     - SCN-tmux-baseline
   checklist:
@@ -149,6 +153,7 @@ validation:
     - VAL-shell-02
     - VAL-shell-05
     - VAL-shell-07
+    - VAL-shell-10
     - VAL-ssh-git-access-01
     - VAL-ssh-git-access-04
     - VAL-terminal-multiplexer-01
@@ -175,6 +180,7 @@ validation:
     - VAL-shell-06
     - VAL-shell-08
     - VAL-shell-09
+    - VAL-shell-11
     - VAL-ssh-git-access-02
     - VAL-ssh-git-access-03
     - VAL-terminal-multiplexer-02
@@ -306,6 +312,12 @@ rules:
   source_type: capability
   source_id: CAP-shell
 - id: VAL-shell-09
+  source_type: capability
+  source_id: CAP-shell
+- id: VAL-shell-10
+  source_type: capability
+  source_id: CAP-shell
+- id: VAL-shell-11
   source_type: capability
   source_id: CAP-shell
 - id: VAL-ssh-git-access-01

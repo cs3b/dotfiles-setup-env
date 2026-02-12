@@ -8,6 +8,7 @@ intentions:
   - Shim or equivalent indirection makes managed binaries resolvable on PATH.
   - Home-level runtime manager config is source of truth for default runtimes.
   - Bun-managed global AI CLIs include gemini, opencode, and pi-mono.
+  - When package and command names differ, both are documented (for example package opencode-ai and command opencode).
 rules:
   - rule_id: VAL-version-manager-01
     assertion: Runtime manager binary exists.
@@ -26,8 +27,8 @@ rules:
     severity: blocker
   - rule_id: VAL-version-manager-04
     assertion: Shell sessions expose managed shims.
-    method: Inspect PATH for manager shim directory and resolve managed binaries.
-    pass_condition: Managed runtime binaries resolve to shim or manager path.
+    method: Probe login-noninteractive shell initialization chain and inspect PATH for manager shim directory.
+    pass_condition: Managed runtime binaries resolve in bash -lc and active shell contexts, including setups where .bash_profile sources .bashrc.
     severity: warn
   - rule_id: VAL-version-manager-05
     assertion: Home-level mise global config exists and declares default runtimes.
@@ -36,8 +37,8 @@ rules:
     severity: blocker
   - rule_id: VAL-version-manager-06
     assertion: Bun-managed global AI CLIs are available.
-    method: Verify gemini, opencode, and pi-mono commands and resolution paths.
-    pass_condition: All commands resolve from bun or mise managed runtime paths.
+    method: Verify gemini, opencode, and pi-mono commands and resolution paths; confirm opencode package mapping uses opencode-ai.
+    pass_condition: All commands resolve from bun or mise managed runtime paths and package-to-command mapping is documented.
     severity: blocker
 os_package_mapping:
   - canonical_capability: runtime-manager
@@ -59,7 +60,7 @@ os_package_mapping:
   - canonical_capability: opencode-cli
     macos_package_id: bun-global
     arch_package_id: bun-global
-    notes: Validate command capability, not registry name.
+    notes: Package name is opencode-ai; runtime command is opencode.
   - canonical_capability: pi-mono-cli
     macos_package_id: bun-global
     arch_package_id: bun-global

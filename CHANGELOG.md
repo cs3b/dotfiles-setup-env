@@ -13,6 +13,14 @@ All notable changes to this repository are documented in this file.
 - Added structured waiver registry `validation/waivers.yaml`.
 - Added missing capability contract `capabilities/deploy-firebase.md`.
 - Reworked capability/profile/os/validation docs to frontmatter-backed contracts.
+- Added retrospective hardening workflow to skills and `CONTRIBUTION.md`:
+  - mandatory preflight checks
+  - risk-batched execution rules
+  - probe concurrency and retry guidance
+- Hardened shell contracts with explicit fish runtime probe and bash init-chain checks.
+- Clarified package-name vs command-name mapping semantics for Bun global CLIs (including `opencode-ai` -> `opencode`).
+- Hardened markdown preview contract for headless-safe build method.
+- Refined security scan contract to exclude contract docs from token-pattern matching.
 
 ## 2026-02-12 (earlier)
 - Initialized independent git repository in `setup-env`.

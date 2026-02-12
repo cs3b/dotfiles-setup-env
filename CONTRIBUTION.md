@@ -32,6 +32,25 @@ Validation enforces:
 - waiver integrity and expiry policy
 - generated index parity
 
+## Mandatory Preflight (Before Execution Plans)
+1. Validate package names before proposing install commands.
+2. Validate shell initialization chain for login-noninteractive contexts:
+   - `.bash_profile -> .bashrc`
+   - at least one `bash -lc` probe and one `fish -lc` probe
+3. Validate headless-safe Neovim plugin build methods when plugin bootstrap is in scope.
+4. Separate package name and command name when they differ (for example package `opencode-ai`, command `opencode`).
+
+## Mandatory Execution Batching Rules
+1. Do not combine high-risk network installs with unrelated safe file writes in the same parallel batch.
+2. Install global CLI packages one at a time.
+3. Group probes in parallel batches of at most 8-10 commands.
+4. If probe output is empty, run a second focused verification pass before concluding failure.
+
+## Mandatory Verification Rules
+1. Shell parity checks must include runtime probes for both bash and fish, not only static file inspection.
+2. Security token scans must exclude contract documentation files from match scope.
+3. Headless plugin installation checks must use noninteractive-safe build methods.
+
 ## Typical Change Flow
 1. Update relevant files (`capabilities/`, `profiles/`, `os/`, `validation/`).
 2. Ensure checklist and scenarios remain aligned.
