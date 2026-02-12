@@ -37,7 +37,7 @@ Validation enforces:
 1. Validate package names before proposing install commands.
 2. Validate shell initialization chain for login-noninteractive contexts:
    - `.bash_profile -> .bashrc`
-   - at least one `bash -lc` probe and one `fish -lc` probe
+   - run probes for installed shells among `bash`, `zsh`, and `fish` (do not require fish installation)
 3. Validate headless-safe Neovim plugin build methods when plugin bootstrap is in scope.
 4. Separate package name and command name when they differ (for example package `opencode-ai`, command `opencode`).
 5. Prefer native binary distributions for core CLIs before JS wrapper installs.
@@ -50,7 +50,7 @@ Validation enforces:
 5. After every install or upgrade command, run an immediate smoke probe (`<command> --version` or noninteractive help) before continuing.
 
 ## Mandatory Verification Rules
-1. Shell parity checks must include runtime probes for both bash and fish, not only static file inspection.
+1. Shell parity checks must include runtime probes for installed shells among bash/zsh/fish, not only static file inspection.
 2. Security token scans must exclude contract documentation files from match scope.
 3. Headless plugin installation checks must use noninteractive-safe build methods.
 4. Bun global CLI verification must include entrypoint runtime compatibility checks (avoid hidden `#!/usr/bin/env node` failures).

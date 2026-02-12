@@ -2,6 +2,11 @@
 
 All notable changes to this repository are documented in this file.
 
+## 2026-02-12 (shell recommendation policy)
+- Removed fixed fish-package recommendation from shell capability mapping.
+- Updated shell validation semantics to probe whichever shells are installed (`bash`, `zsh`, `fish`) without requiring fish installation.
+- Updated shell scenarios and contribution verification rules to match installed-shell probing policy.
+
 ## 2026-02-12 (gh and git identity checks)
 - Added core validation for `gh auth status` under SSH/Git access capability.
 - Added core validation for GitHub credential helper integration from `gh auth setup-git` semantics.

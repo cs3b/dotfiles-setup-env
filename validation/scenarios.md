@@ -15,12 +15,12 @@ scenarios:
     profiles:
       - PROFILE-core
     platform: any
-    expected: shell shortcut and smart-jump parity holds across fish zsh bash
+    expected: shell shortcut and smart-jump parity holds across installed shells among fish zsh bash
   - scenario_id: SCN-shell-init-chain
     profiles:
       - PROFILE-core
     platform: any
-    expected: fish -lc probes succeed and bash login-noninteractive init chain preserves runtime activation
+    expected: noninteractive probes succeed for installed shells among fish zsh bash and bash init-chain checks pass when bash is present
   - scenario_id: SCN-neovim-behavior
     profiles:
       - PROFILE-core
