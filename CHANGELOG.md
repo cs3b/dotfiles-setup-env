@@ -2,6 +2,15 @@
 
 All notable changes to this repository are documented in this file.
 
+## 2026-02-12 (lazyvim templates)
+- Added `templates/lazyvim/plugins/` drop-in templates for:
+  - hidden and gitignored files visible by default
+  - `yp*` path-yank keymaps (`ypf`, `ypl`, `ypd`, `ypF`, `ypL`, `ypD`)
+  - insert-mode relative path insertion
+  - markdown preview plugin with headless-safe build command
+- Documented template usage in `templates/lazyvim/README.md`.
+- Added template mention to `README.md` and contribution guidance.
+
 ## 2026-02-12 (git pager compatibility)
 - Added `less` recommendation in package tooling capability to prevent `git log`/`gl` pager failures.
 - Added `gl` no-pager fallback mapping when pager tooling is intentionally absent.

@@ -33,6 +33,7 @@ Start here: [`quickstart.md`](quickstart.md)
 - `contracts/`: generated contract index and runner contract.
 - `tools/`: validation and index-generation scripts.
 - `.agent/skills/`: reusable cross-agent skills.
+- `templates/`: drop-in templates (including LazyVim plugin customizations).
 
 ## Contributing
 Contribution workflow, authoring rules, and validation steps:

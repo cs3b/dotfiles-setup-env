@@ -15,6 +15,7 @@ Contributions should improve:
 - Markdown body should explain intent, not duplicate machine fields.
 - Keep IDs stable unless a rename is explicitly required.
 - Do not add provisioning scripts or secrets.
+- When Neovim behavior contracts change, update matching files under `templates/lazyvim/plugins/`.
 
 ## Required Checks
 Before opening a PR, run:
