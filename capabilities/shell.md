@@ -33,17 +33,17 @@ rules:
   - rule_id: VAL-shell-05
     assertion: Core Claude shortcut cc resolves to claude invocation with permissions flag.
     method: Inspect shell abbreviation/alias/function registry.
-    pass_condition: cc expands to claude --dangerously-skip-permissions equivalent.
+    pass_condition: cc expands exactly to claude --dangerously-skip-permissions.
     severity: blocker
   - rule_id: VAL-shell-06
     assertion: Extended Claude task shortcuts are defined.
-    method: Verify cc-on, cc-lcp, cc-wt, cc-rt, cc-pt, cc-ft definitions.
-    pass_condition: All listed shortcuts resolve to intended claude invocation text.
+    method: Verify exact definitions for cc-on, cc-lcp, cc-wt, cc-rt, cc-pt, cc-ft.
+    pass_condition: cc-on -> claude --dangerously-skip-permissions "/onboard"; cc-lcp -> claude --dangerously-skip-permissions "/onboard \n /ace:prompt"; cc-wt -> claude --dangerously-skip-permissions "/ace:work-on-task"; cc-rt -> claude --dangerously-skip-permissions "/ace:review-task"; cc-pt -> claude --dangerously-skip-permissions "/ace:plan-task"; cc-ft -> claude --dangerously-skip-permissions "/ace:fix-tests".
     severity: warn
   - rule_id: VAL-shell-07
     assertion: Cross-shell shortcut behavior parity exists for required cc shortcuts.
     method: Inspect alias/function/abbr/readline mappings for active shell.
-    pass_condition: Required shortcuts are reachable and behaviorally equivalent.
+    pass_condition: Required shortcuts cc, ccp, ccc, ccr, cct, cc-on, cc-lcp, cc-wt, cc-rt, cc-pt, cc-ft are reachable and behaviorally equivalent.
     severity: blocker
   - rule_id: VAL-shell-08
     assertion: Smart directory-jump behavior works in shell context.
