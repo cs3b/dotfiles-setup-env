@@ -9,6 +9,7 @@ intentions:
   - Smart directory jump capability is available.
   - Prompt customization capability is available.
   - Cross-shell shortcut behavior parity exists for required Claude shortcuts.
+  - Core git shortcuts are defined with explicit expansion semantics.
 rules:
   - rule_id: VAL-shell-01
     assertion: Primary shell launches and executes noninteractive command.
@@ -49,6 +50,11 @@ rules:
     assertion: Smart directory-jump behavior works in shell context.
     method: Verify zoxide integration or equivalent smart-jump behavior.
     pass_condition: Smart-jump capability is callable from shell session.
+    severity: warn
+  - rule_id: VAL-shell-09
+    assertion: Core git shortcuts are defined with explicit mappings.
+    method: Inspect alias/function/abbr/readline mappings for active shell.
+    pass_condition: gs -> git status -sb; ga -> git add; gaa -> git add --all; gd -> git diff; gds -> git diff --staged; gl -> git log --oneline --graph --decorate; gll -> git pull; gb -> git branch; gco -> git checkout; gsw -> git switch; gr -> git rebase; gri -> git rebase -i; grom -> git rebase origin/main; gpl -> git pull --ff-only; gp -> git push; gpf -> git push --force-with-lease; gpfl -> git add && git push --force-with-lease; gc resolves to ace-git-commit when available, otherwise git commit.
     severity: warn
 os_package_mapping:
   - canonical_capability: Primary shell

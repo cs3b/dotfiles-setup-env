@@ -30,6 +30,7 @@ core_warns:
   - VAL-shell-04
   - VAL-shell-06
   - VAL-shell-08
+  - VAL-shell-09
   - VAL-package-tooling-04
   - VAL-package-tooling-06
   - VAL-editor-neovim-03
