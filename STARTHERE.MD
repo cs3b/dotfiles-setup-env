@@ -6,7 +6,7 @@
 
 ## 1) Clone to `~/.dotfiles`
 ```bash
-git clone <REPO_URL> .dotfiles
+git clone git@github.com:cs3b/dotfiles-setup-env.git .dotfiles
 ```
 
 ## 2) Start the Agent in This Folder
