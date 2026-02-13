@@ -67,6 +67,11 @@ scenarios:
       - PROFILE-core
     platform: any
     expected: tmux binary exists and reports version
+  - scenario_id: SCN-clipboard-sharing-ssh-tmux-nvim
+    profiles:
+      - PROFILE-core
+    platform: any
+    expected: OSC52 copy path is configured so remote Neovim yanks and tmux copy-mode selections reach host clipboard over SSH
   - scenario_id: SCN-security-hygiene-scan
     profiles:
       - PROFILE-core

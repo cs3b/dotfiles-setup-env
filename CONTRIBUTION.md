@@ -16,6 +16,7 @@ Contributions should improve:
 - Keep IDs stable unless a rename is explicitly required.
 - Do not add provisioning scripts or secrets.
 - When Neovim behavior contracts change, update matching files under `templates/lazyvim/plugins/`.
+- When clipboard-sharing contracts change, update matching files under `nvim/.config/nvim/`, `tmux/`, and `templates/tmux/`.
 
 ## Required Checks
 Before opening a PR, run:
@@ -55,6 +56,7 @@ Validation enforces:
 3. Headless plugin installation checks must use noninteractive-safe build methods.
 4. Bun global CLI verification must include entrypoint runtime compatibility checks (avoid hidden `#!/usr/bin/env node` failures).
 5. Verification evidence for runtime/config behavior must come from active system paths (for example `~/.config/...`) and repository searches must exclude `.git/`.
+6. Clipboard-sharing verification must include an SSH+tmux+Neovim runtime proof (remote yank reaches host clipboard via OSC52).
 
 ## Typical Change Flow
 1. Update relevant files (`capabilities/`, `profiles/`, `os/`, `validation/`).

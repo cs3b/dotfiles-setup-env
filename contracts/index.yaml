@@ -31,6 +31,15 @@ capabilities:
   - VAL-ai-auth-04
   - VAL-ai-auth-05
   - VAL-ai-auth-06
+- id: CAP-clipboard-sharing
+  path: capabilities/clipboard-sharing.md
+  status: required
+  rule_ids:
+  - VAL-clipboard-sharing-01
+  - VAL-clipboard-sharing-02
+  - VAL-clipboard-sharing-03
+  - VAL-clipboard-sharing-04
+  - VAL-clipboard-sharing-05
 - id: CAP-deploy-firebase
   path: capabilities/deploy-firebase.md
   status: optional:PROFILE-optional-ai-coding
@@ -116,6 +125,7 @@ profiles:
   - CAP-abbreviations-ace-taskflow
   - CAP-abbreviations-claude
   - CAP-abbreviations-git
+  - CAP-clipboard-sharing
   - CAP-editor-neovim
   - CAP-fonts-terminal
   - CAP-package-tooling
@@ -150,6 +160,7 @@ validation:
     - SCN-abbreviations-claude
     - SCN-abbreviations-git
     - SCN-bun-global-shebang-compatibility
+    - SCN-clipboard-sharing-ssh-tmux-nvim
     - SCN-fresh-arch-core
     - SCN-fresh-macos-core
     - SCN-gh-auth-and-git-identity
@@ -170,6 +181,9 @@ validation:
     - VAL-abbreviations-ace-taskflow-02
     - VAL-abbreviations-claude-01
     - VAL-abbreviations-claude-03
+    - VAL-clipboard-sharing-02
+    - VAL-clipboard-sharing-03
+    - VAL-clipboard-sharing-04
     - VAL-editor-neovim-01
     - VAL-editor-neovim-02
     - VAL-fonts-terminal-01
@@ -200,6 +214,8 @@ validation:
     - VAL-abbreviations-claude-02
     - VAL-abbreviations-git-01
     - VAL-abbreviations-git-02
+    - VAL-clipboard-sharing-01
+    - VAL-clipboard-sharing-05
     - VAL-editor-neovim-03
     - VAL-editor-neovim-04
     - VAL-editor-neovim-05
@@ -270,6 +286,21 @@ rules:
 - id: VAL-ai-auth-06
   source_type: capability
   source_id: CAP-ai-auth
+- id: VAL-clipboard-sharing-01
+  source_type: capability
+  source_id: CAP-clipboard-sharing
+- id: VAL-clipboard-sharing-02
+  source_type: capability
+  source_id: CAP-clipboard-sharing
+- id: VAL-clipboard-sharing-03
+  source_type: capability
+  source_id: CAP-clipboard-sharing
+- id: VAL-clipboard-sharing-04
+  source_type: capability
+  source_id: CAP-clipboard-sharing
+- id: VAL-clipboard-sharing-05
+  source_type: capability
+  source_id: CAP-clipboard-sharing
 - id: VAL-deploy-firebase-01
   source_type: capability
   source_id: CAP-deploy-firebase

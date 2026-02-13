@@ -14,6 +14,7 @@ Most dotfiles repos are scripts and one-off shell tweaks. This repo is different
 - Single source of truth for environment requirements.
 - Contract-first model: human-readable docs + machine-validated structure.
 - Repeatable verification via `tools/validate-contract.sh`.
+- SSH clipboard sharing contract for `tmux + Neovim` via OSC52.
 - Shared skill catalog under `.agent/skills` with repo-local links:
   - `.codex/skills -> ../.agent/skills`
   - `.claude/skills -> ../.agent/skills`
@@ -32,8 +33,10 @@ Start here: [`quickstart.md`](quickstart.md)
 - `schemas/`: contract schema definitions.
 - `contracts/`: generated contract index and runner contract.
 - `tools/`: validation and index-generation scripts.
+- `nvim/`: active Neovim dotfile fragments for this setup.
+- `tmux/`: active tmux dotfile fragments for this setup.
 - `.agent/skills/`: reusable cross-agent skills.
-- `templates/`: drop-in templates (including LazyVim plugin customizations).
+- `templates/`: drop-in templates (LazyVim, shell shortcuts, tmux snippets).
 
 ## Contributing
 Contribution workflow, authoring rules, and validation steps:

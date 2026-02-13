@@ -12,6 +12,7 @@ included_capabilities:
   - CAP-ssh-git-access
   - CAP-fonts-terminal
   - CAP-terminal-multiplexer
+  - CAP-clipboard-sharing
   - CAP-security-hygiene
 validation_policy:
   blockers_required: true

@@ -2,6 +2,17 @@
 
 All notable changes to this repository are documented in this file.
 
+## 2026-02-13 (ssh clipboard sharing via osc52)
+- Added `CAP-clipboard-sharing` with explicit rules for OSC52 workflow across SSH, tmux, and Neovim.
+- Added active dotfile configs:
+  - `nvim/.config/nvim/lua/plugins/clipboard-osc52.lua`
+  - `tmux/.tmux.conf`
+- Added reusable templates:
+  - `templates/lazyvim/plugins/clipboard-osc52.lua`
+  - `templates/tmux/clipboard-osc52.conf`
+- Updated `PROFILE-core`, checklist, and scenarios to enforce clipboard-sharing behavior.
+- Updated docs (`README.md`, `quickstart.md`, `CONTRIBUTION.md`) with clipboard-sharing guidance and verification policy.
+
 ## 2026-02-13 (contract accuracy and policy)
 - Fixed pi-mono command name mismatch: renamed to `pi` across version-manager and ai-auth capabilities to match actual `@mariozechner/pi-coding-agent` package output.
 - Updated pi-cli os_package_mapping to document package-to-command mapping.

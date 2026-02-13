@@ -12,6 +12,7 @@ nvim --headless "+Lazy! sync" +qa
 
 ## Included Templates
 - `hidden-files-defaults.lua`: show hidden and gitignored files by default.
+- `clipboard-osc52.lua`: OSC52 clipboard sharing for SSH sessions (copy-only policy with unnamedplus).
 - `path-yank.lua`: `yp*` keymaps to copy file/dir paths (relative and absolute, with line variants).
 - `insert-relative-path.lua`: insert-mode mapping to insert current file relative path.
 - `markdown-preview.lua`: markdown preview plugin with headless-safe build command.

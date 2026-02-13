@@ -23,6 +23,9 @@ core_blockers:
   - VAL-ssh-git-access-07
   - VAL-fonts-terminal-01
   - VAL-terminal-multiplexer-01
+  - VAL-clipboard-sharing-02
+  - VAL-clipboard-sharing-03
+  - VAL-clipboard-sharing-04
   - VAL-security-hygiene-01
   - VAL-security-hygiene-02
   - VAL-os-macos-01
@@ -52,6 +55,8 @@ core_warns:
   - VAL-fonts-terminal-02
   - VAL-fonts-terminal-03
   - VAL-terminal-multiplexer-02
+  - VAL-clipboard-sharing-01
+  - VAL-clipboard-sharing-05
   - VAL-security-hygiene-03
   - VAL-os-macos-02
   - VAL-os-macos-03
