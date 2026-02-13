@@ -1,1 +1,11 @@
-waivers: []
+waivers:
+  - rule_id: VAL-fonts-terminal-01
+    reason: Font installation is a client-side concern; accessed via SSH so Nerd Font must be on the host terminal, not testable from inside the container.
+    exception_ref: EXC-fonts-terminal-01
+    scope: headless-container
+    expires_on: "2026-08-13"
+  - rule_id: VAL-fonts-terminal-02
+    reason: Terminal font config is a client-side concern; container has no local terminal emulator to configure.
+    exception_ref: EXC-fonts-terminal-01
+    scope: headless-container
+    expires_on: "2026-08-13"
