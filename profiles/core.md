@@ -3,6 +3,9 @@ kind: profile
 profile_id: PROFILE-core
 included_capabilities:
   - CAP-shell
+  - CAP-abbreviations-git
+  - CAP-abbreviations-claude
+  - CAP-abbreviations-ace-taskflow
   - CAP-package-tooling
   - CAP-editor-neovim
   - CAP-version-manager

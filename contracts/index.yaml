@@ -1,6 +1,26 @@
 ---
 snapshot: v0
 capabilities:
+- id: CAP-abbreviations-ace-taskflow
+  path: capabilities/abbreviations-ace-taskflow.md
+  status: required
+  rule_ids:
+  - VAL-abbreviations-ace-taskflow-01
+  - VAL-abbreviations-ace-taskflow-02
+  - VAL-abbreviations-ace-taskflow-03
+- id: CAP-abbreviations-claude
+  path: capabilities/abbreviations-claude.md
+  status: required
+  rule_ids:
+  - VAL-abbreviations-claude-01
+  - VAL-abbreviations-claude-02
+  - VAL-abbreviations-claude-03
+- id: CAP-abbreviations-git
+  path: capabilities/abbreviations-git.md
+  status: required
+  rule_ids:
+  - VAL-abbreviations-git-01
+  - VAL-abbreviations-git-02
 - id: CAP-ai-auth
   path: capabilities/ai-auth.md
   status: optional:PROFILE-optional-ai-coding
@@ -59,11 +79,7 @@ capabilities:
   - VAL-shell-02
   - VAL-shell-03
   - VAL-shell-04
-  - VAL-shell-05
-  - VAL-shell-06
-  - VAL-shell-07
   - VAL-shell-08
-  - VAL-shell-09
   - VAL-shell-10
   - VAL-shell-11
 - id: CAP-ssh-git-access
@@ -97,6 +113,9 @@ profiles:
 - id: PROFILE-core
   path: profiles/core.md
   included_capabilities:
+  - CAP-abbreviations-ace-taskflow
+  - CAP-abbreviations-claude
+  - CAP-abbreviations-git
   - CAP-editor-neovim
   - CAP-fonts-terminal
   - CAP-package-tooling
@@ -127,6 +146,9 @@ validation:
   scenarios:
     path: validation/scenarios.md
     scenario_ids:
+    - SCN-abbreviations-ace-taskflow
+    - SCN-abbreviations-claude
+    - SCN-abbreviations-git
     - SCN-bun-global-shebang-compatibility
     - SCN-fresh-arch-core
     - SCN-fresh-macos-core
@@ -145,6 +167,9 @@ validation:
   checklist:
     path: validation/checklist.md
     core_blockers:
+    - VAL-abbreviations-ace-taskflow-02
+    - VAL-abbreviations-claude-01
+    - VAL-abbreviations-claude-03
     - VAL-editor-neovim-01
     - VAL-editor-neovim-02
     - VAL-fonts-terminal-01
@@ -159,8 +184,6 @@ validation:
     - VAL-security-hygiene-02
     - VAL-shell-01
     - VAL-shell-02
-    - VAL-shell-05
-    - VAL-shell-07
     - VAL-shell-10
     - VAL-ssh-git-access-01
     - VAL-ssh-git-access-04
@@ -172,6 +195,11 @@ validation:
     - VAL-version-manager-05
     - VAL-version-manager-06
     core_warns:
+    - VAL-abbreviations-ace-taskflow-01
+    - VAL-abbreviations-ace-taskflow-03
+    - VAL-abbreviations-claude-02
+    - VAL-abbreviations-git-01
+    - VAL-abbreviations-git-02
     - VAL-editor-neovim-03
     - VAL-editor-neovim-04
     - VAL-editor-neovim-05
@@ -186,9 +214,7 @@ validation:
     - VAL-security-hygiene-03
     - VAL-shell-03
     - VAL-shell-04
-    - VAL-shell-06
     - VAL-shell-08
-    - VAL-shell-09
     - VAL-shell-11
     - VAL-ssh-git-access-02
     - VAL-ssh-git-access-03
@@ -202,6 +228,30 @@ validation:
     path: validation/waivers.yaml
     waiver_ids: []
 rules:
+- id: VAL-abbreviations-ace-taskflow-01
+  source_type: capability
+  source_id: CAP-abbreviations-ace-taskflow
+- id: VAL-abbreviations-ace-taskflow-02
+  source_type: capability
+  source_id: CAP-abbreviations-ace-taskflow
+- id: VAL-abbreviations-ace-taskflow-03
+  source_type: capability
+  source_id: CAP-abbreviations-ace-taskflow
+- id: VAL-abbreviations-claude-01
+  source_type: capability
+  source_id: CAP-abbreviations-claude
+- id: VAL-abbreviations-claude-02
+  source_type: capability
+  source_id: CAP-abbreviations-claude
+- id: VAL-abbreviations-claude-03
+  source_type: capability
+  source_id: CAP-abbreviations-claude
+- id: VAL-abbreviations-git-01
+  source_type: capability
+  source_id: CAP-abbreviations-git
+- id: VAL-abbreviations-git-02
+  source_type: capability
+  source_id: CAP-abbreviations-git
 - id: VAL-ai-auth-01
   source_type: capability
   source_id: CAP-ai-auth
@@ -310,19 +360,7 @@ rules:
 - id: VAL-shell-04
   source_type: capability
   source_id: CAP-shell
-- id: VAL-shell-05
-  source_type: capability
-  source_id: CAP-shell
-- id: VAL-shell-06
-  source_type: capability
-  source_id: CAP-shell
-- id: VAL-shell-07
-  source_type: capability
-  source_id: CAP-shell
 - id: VAL-shell-08
-  source_type: capability
-  source_id: CAP-shell
-- id: VAL-shell-09
   source_type: capability
   source_id: CAP-shell
 - id: VAL-shell-10

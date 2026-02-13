@@ -10,8 +10,6 @@ intentions:
   - Runtime manager activation is available in shell sessions.
   - Smart directory jump capability is available.
   - Prompt customization capability is available.
-  - Cross-shell shortcut behavior parity exists for required Claude shortcuts.
-  - Core git shortcuts are defined with explicit expansion semantics.
 rules:
   - rule_id: VAL-shell-01
     assertion: Primary shell launches and executes noninteractive command.
@@ -33,30 +31,10 @@ rules:
     method: Run <shell> -lc 'command -v starship || test -n "$PS1"'.
     pass_condition: Starship exists or prompt is explicitly customized.
     severity: warn
-  - rule_id: VAL-shell-05
-    assertion: Core Claude shortcuts are defined with explicit mappings.
-    method: Inspect shell abbreviation/alias/function registry for cc, ccp, ccc, ccr, cct.
-    pass_condition: cc -> claude --dangerously-skip-permissions; ccp -> claude --dangerously-skip-permissions -p; ccc -> claude --dangerously-skip-permissions --continue; ccr -> claude --dangerously-skip-permissions --resume; cct -> claude --dangerously-skip-permissions setup-token.
-    severity: blocker
-  - rule_id: VAL-shell-06
-    assertion: Extended Claude task shortcuts are defined.
-    method: Verify exact definitions for cc-on, cc-lcp, cc-wt, cc-rt, cc-pt, cc-ft.
-    pass_condition: cc-on -> claude --dangerously-skip-permissions "/onboard"; cc-lcp -> claude --dangerously-skip-permissions "/onboard \n /ace:prompt"; cc-wt -> claude --dangerously-skip-permissions "/ace:work-on-task"; cc-rt -> claude --dangerously-skip-permissions "/ace:review-task"; cc-pt -> claude --dangerously-skip-permissions "/ace:plan-task"; cc-ft -> claude --dangerously-skip-permissions "/ace:fix-tests".
-    severity: warn
-  - rule_id: VAL-shell-07
-    assertion: Cross-shell shortcut behavior parity exists for required cc shortcuts.
-    method: Inspect alias/function/abbr/readline mappings for active shell.
-    pass_condition: Required shortcuts cc, ccp, ccc, ccr, cct, cc-on, cc-lcp, cc-wt, cc-rt, cc-pt, cc-ft are reachable and behaviorally equivalent.
-    severity: blocker
   - rule_id: VAL-shell-08
     assertion: Smart directory-jump behavior works in shell context.
     method: Verify zoxide integration or equivalent smart-jump behavior.
     pass_condition: Smart-jump capability is callable from shell session.
-    severity: warn
-  - rule_id: VAL-shell-09
-    assertion: Core git shortcuts are defined with explicit mappings.
-    method: Inspect alias/function/abbr/readline mappings for active shell.
-    pass_condition: gs -> git status -sb; ga -> git add; gaa -> git add --all; gd -> git diff; gds -> git diff --staged; gl -> git log --oneline --graph --decorate (or git --no-pager log --oneline --graph --decorate when pager tooling is unavailable); gll -> git pull; gb -> git branch; gco -> git checkout; gsw -> git switch; gr -> git rebase; gri -> git rebase -i; grom -> git rebase origin/main; gpl -> git pull --ff-only; gp -> git push; gpf -> git push --force-with-lease; gpfl -> git add && git push --force-with-lease; gc resolves to ace-git-commit when available, otherwise git commit.
     severity: warn
   - rule_id: VAL-shell-10
     assertion: Runtime probes succeed for whichever supported shells are installed.
@@ -81,15 +59,11 @@ os_package_mapping:
     macos_package_id: zoxide
     arch_package_id: zoxide
     notes: Optional but recommended.
-  - canonical_capability: Claude CLI
-    macos_package_id: claude-code
-    arch_package_id: claude-code-bin
-    notes: Distribution name may vary on Arch.
 known_exceptions:
   - id: EXC-shell-01
-    statement: If Claude CLI is intentionally absent, VAL-shell-05 may be waived only when AI workflow profile is disabled.
-    compliance_impact: blocker-waivable
+    statement: Environments that intentionally use unsupported shells still pass when at least one supported shell (bash, zsh, fish) satisfies runtime behavior rules.
+    compliance_impact: warn
 ---
 # Shell Capability
 
-This capability defines interactive shell behavior and shortcut parity requirements across fish, zsh, and bash.
+This capability defines interactive shell behavior and runtime initialization across fish, zsh, and bash.

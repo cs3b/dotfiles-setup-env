@@ -15,7 +15,22 @@ scenarios:
     profiles:
       - PROFILE-core
     platform: any
-    expected: shell shortcut and smart-jump parity holds across installed shells among fish zsh bash
+    expected: shell runtime probes and smart-jump behavior hold across installed shells among fish zsh bash
+  - scenario_id: SCN-abbreviations-claude
+    profiles:
+      - PROFILE-core
+    platform: any
+    expected: claude abbreviations map correctly and remain behaviorally equivalent across installed shells
+  - scenario_id: SCN-abbreviations-git
+    profiles:
+      - PROFILE-core
+    platform: any
+    expected: git abbreviations map correctly and remain behaviorally equivalent across installed shells
+  - scenario_id: SCN-abbreviations-ace-taskflow
+    profiles:
+      - PROFILE-core
+    platform: any
+    expected: active shell resolves tfts to ace-taskflow tasks via shell-native mapping (fish abbr or bash/zsh alias/function)
   - scenario_id: SCN-shell-init-chain
     profiles:
       - PROFILE-core

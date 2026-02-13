@@ -2,6 +2,26 @@
 
 All notable changes to this repository are documented in this file.
 
+## 2026-02-12 (ace-taskflow active-shell shortcut policy)
+- Tightened `CAP-abbreviations-ace-taskflow` to require only `tfts -> ace-taskflow tasks`.
+- Enforced shell-native mapping semantics by active shell:
+  - fish: abbreviation
+  - bash/zsh: alias or function
+- Updated ace-taskflow abbreviation scenario to validate active-shell behavior without extra manual shell-specific setup steps.
+
+## 2026-02-12 (split shell abbreviations capabilities)
+- Split shortcut requirements out of `CAP-shell` into dedicated capabilities:
+  - `CAP-abbreviations-git`
+  - `CAP-abbreviations-claude`
+  - `CAP-abbreviations-ace-taskflow`
+- Added explicit ace-taskflow shortcut set validation including `tfts` and related mappings.
+- Updated `PROFILE-core`, checklist, and scenarios to evaluate abbreviation groups independently from shell runtime behavior.
+
+## 2026-02-12 (lazyvim visible-files config)
+- Added repo dotfile config `nvim/.config/nvim/lua/plugins/snacks-visible.lua`.
+- Configures LazyVim Snacks sources so `<leader>e` (explorer) and `<leader><leader>` (files) include hidden and ignored entries by default, while excluding `.git`.
+- Simplified template `templates/lazyvim/plugins/hidden-files-defaults.lua` to the same single Snacks-based behavior.
+
 ## 2026-02-12 (probe scope and system config evidence)
 - Updated verification guidance to prefer live system config evidence (for example `~/.config/...`) over repo-only inspection for runtime/config rules.
 - Added explicit `.git/` exclusion guidance for repository text-search probes.
