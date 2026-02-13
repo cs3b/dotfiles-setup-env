@@ -7,7 +7,7 @@ intentions:
   - Ruby and Bun runtimes are managed declaratively as default environments.
   - Shim or equivalent indirection makes managed binaries resolvable on PATH.
   - Home-level runtime manager config is source of truth for default runtimes.
-  - Bun-managed global AI CLIs include gemini, opencode, and pi-mono.
+  - Bun-managed global AI CLIs include gemini, opencode, and pi.
   - When package and command names differ, both are documented (for example package opencode-ai and command opencode).
   - Bun-managed CLI installs are verified for executable shebang/runtime compatibility, not only package install success.
 rules:
@@ -38,7 +38,7 @@ rules:
     severity: blocker
   - rule_id: VAL-version-manager-06
     assertion: Bun-managed global AI CLIs are available and executable.
-    method: Verify gemini, opencode, and pi-mono commands and resolution paths; run immediate smoke probes after install; confirm opencode package mapping uses opencode-ai; verify generated script entrypoints do not fail due to missing shebang runtime dependencies.
+    method: Verify gemini, opencode, and pi commands and resolution paths; run immediate smoke probes after install; confirm opencode package mapping uses opencode-ai and pi package mapping uses @mariozechner/pi-coding-agent; verify generated script entrypoints do not fail due to missing shebang runtime dependencies.
     pass_condition: All commands resolve from bun or mise managed runtime paths, pass version/help smoke probes, and package-to-command mapping is documented.
     severity: blocker
 os_package_mapping:
@@ -62,10 +62,10 @@ os_package_mapping:
     macos_package_id: bun-global
     arch_package_id: bun-global
     notes: Package name is opencode-ai; runtime command is opencode.
-  - canonical_capability: pi-mono-cli
+  - canonical_capability: pi-cli
     macos_package_id: bun-global
     arch_package_id: bun-global
-    notes: Validate command capability, not registry name.
+    notes: Package name is @mariozechner/pi-coding-agent; runtime command is pi.
 known_exceptions:
   - id: EXC-version-manager-01
     statement: Alternative runtime managers are allowed if replacement is declared and validation semantics are preserved.

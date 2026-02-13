@@ -2,6 +2,11 @@
 
 All notable changes to this repository are documented in this file.
 
+## 2026-02-13 (contract accuracy and policy)
+- Fixed pi-mono command name mismatch: renamed to `pi` across version-manager and ai-auth capabilities to match actual `@mariozechner/pi-coding-agent` package output.
+- Updated pi-cli os_package_mapping to document package-to-command mapping.
+- Added shell-history secret handling policy to security-hygiene capability body (satisfies VAL-security-hygiene-03).
+
 ## 2026-02-12 (ace-taskflow active-shell shortcut policy)
 - Tightened `CAP-abbreviations-ace-taskflow` to require only `tfts -> ace-taskflow tasks`.
 - Enforced shell-native mapping semantics by active shell:

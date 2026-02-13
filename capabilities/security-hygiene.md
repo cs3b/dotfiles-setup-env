@@ -35,3 +35,12 @@ known_exceptions:
 # Security Hygiene Capability
 
 This capability defines secret-handling outcomes for tracked setup artifacts.
+
+## Shell-History Secret Handling Policy
+
+To satisfy VAL-security-hygiene-03, the following conventions apply:
+
+- Prefix sensitive commands with a leading space to exclude them from history (requires HISTCONTROL=ignorespace or ignoreboth in bash; fish uses `--private` mode).
+- Never pass tokens, passwords, or API keys as inline command arguments; use environment variables sourced from untracked files or secure prompts instead.
+- Avoid persisting authentication commands (e.g., `export API_KEY=...`) in shell history; use tool-native auth flows (e.g., `gh auth login`, `claude setup-token`) which handle credential storage securely.
+- Periodically audit `~/.bash_history` and `~/.local/share/fish/fish_history` for accidental secret leakage.

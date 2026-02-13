@@ -33,7 +33,7 @@ rules:
     pass_condition: Authenticated status is confirmed, or missing auth is recorded as warning.
     severity: warn
   - rule_id: VAL-ai-auth-06
-    assertion: pi-mono CLI authentication status is verifiable.
+    assertion: pi CLI authentication status is verifiable.
     method: Run tool-supported noninteractive auth status, whoami, or help probe.
     pass_condition: Authenticated status is confirmed, or missing auth is recorded as warning.
     severity: warn
@@ -58,10 +58,10 @@ os_package_mapping:
     macos_package_id: bun-global
     arch_package_id: bun-global
     notes: Optional auth validation.
-  - canonical_capability: pi-mono-cli-auth
+  - canonical_capability: pi-cli-auth
     macos_package_id: bun-global
     arch_package_id: bun-global
-    notes: Optional auth validation.
+    notes: Package name is @mariozechner/pi-coding-agent; runtime command is pi.
 known_exceptions:
   - id: EXC-ai-auth-01
     statement: Some CLIs do not expose direct auth-status commands; equivalent noninteractive probes may be used.
