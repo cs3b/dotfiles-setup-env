@@ -26,6 +26,11 @@ scenarios:
       - PROFILE-core
     platform: any
     expected: LazyVim baseline plus hidden-file visibility markdown-preview and path-yank behavior pass
+  - scenario_id: SCN-neovim-hidden-ignored-defaults
+    profiles:
+      - PROFILE-core
+    platform: any
+    expected: active Neovim/LazyVim system config defaults file search and explorer views to include hidden and gitignored files
   - scenario_id: SCN-headless-markdown-preview-build
     profiles:
       - PROFILE-core

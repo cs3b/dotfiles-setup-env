@@ -135,6 +135,7 @@ validation:
     - SCN-install-smoke-after-mutation
     - SCN-native-cli-source-selection
     - SCN-neovim-behavior
+    - SCN-neovim-hidden-ignored-defaults
     - SCN-optional-ai-coding-enabled
     - SCN-optional-profile-disabled
     - SCN-security-hygiene-scan

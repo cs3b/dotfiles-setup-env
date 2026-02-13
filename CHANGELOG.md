@@ -2,6 +2,11 @@
 
 All notable changes to this repository are documented in this file.
 
+## 2026-02-12 (probe scope and system config evidence)
+- Updated verification guidance to prefer live system config evidence (for example `~/.config/...`) over repo-only inspection for runtime/config rules.
+- Added explicit `.git/` exclusion guidance for repository text-search probes.
+- Added dedicated Neovim scenario for hidden+ignored files default behavior in active LazyVim config.
+
 ## 2026-02-12 (shell recommendation policy)
 - Removed fixed fish-package recommendation from shell capability mapping.
 - Updated shell validation semantics to probe whichever shells are installed (`bash`, `zsh`, `fish`) without requiring fish installation.

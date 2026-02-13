@@ -17,13 +17,13 @@ rules:
     severity: blocker
   - rule_id: VAL-editor-neovim-02
     assertion: LazyVim baseline is active.
-    method: Inspect config for LazyVim bootstrap or import.
-    pass_condition: Config references LazyVim plugin set as base.
+    method: Inspect live system Neovim config (for example ~/.config/nvim) for LazyVim bootstrap or import.
+    pass_condition: Active system config references LazyVim plugin set as base.
     severity: blocker
   - rule_id: VAL-editor-neovim-03
     assertion: Hidden and ignored files are visible in picker and explorer workflows.
-    method: Inspect picker and explorer config state and effective defaults.
-    pass_condition: Hidden and ignored visibility toggles default to enabled (for example Telescope hidden=true and no_ignore=true; explorer hide_dotfiles=false and hide_gitignored=false).
+    method: Inspect live system Neovim/LazyVim picker and explorer config state and effective defaults.
+    pass_condition: Hidden and ignored visibility toggles default to enabled in active config (for example Telescope hidden=true and no_ignore=true; explorer hide_dotfiles=false and hide_gitignored=false).
     severity: warn
   - rule_id: VAL-editor-neovim-04
     assertion: Markdown preview capability is available.

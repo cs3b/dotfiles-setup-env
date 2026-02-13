@@ -54,6 +54,7 @@ Validation enforces:
 2. Security token scans must exclude contract documentation files from match scope.
 3. Headless plugin installation checks must use noninteractive-safe build methods.
 4. Bun global CLI verification must include entrypoint runtime compatibility checks (avoid hidden `#!/usr/bin/env node` failures).
+5. Verification evidence for runtime/config behavior must come from active system paths (for example `~/.config/...`) and repository searches must exclude `.git/`.
 
 ## Typical Change Flow
 1. Update relevant files (`capabilities/`, `profiles/`, `os/`, `validation/`).

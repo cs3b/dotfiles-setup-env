@@ -31,6 +31,8 @@ Use this skill when the user wants a pure status report.
 ## Guardrails
 - Read-only behavior by default.
 - No mutation commands.
+- Prefer live system evidence for runtime/config rules (for example `~/.config/...`); repo templates are reference material only.
+- Exclude `.git/` from repository text-search probes.
 
 ## References
 - Report format: `references/report-format.md`
