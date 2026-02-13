@@ -16,6 +16,15 @@ curl -fsSL https://claude.ai/install.sh | bash
 
 ### MacOS
 
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+```bash
+brew install git
+brew install --cask claude-code
+```
+
 ## 1) Clone to `~/.dotfiles`
 ```bash
 git clone https://github.com/cs3b/dotfiles-setup-env.git .dotfiles
