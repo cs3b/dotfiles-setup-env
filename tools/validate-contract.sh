@@ -87,6 +87,7 @@ profiles = {}
 oses = {}
 rules = {}
 status_optional_profiles = []
+capability_mapping_refs = []
 
 capability_docs.each do |path|
   begin
@@ -155,9 +156,22 @@ capability_docs.each do |path|
       errors << "#{path}: os_package_mapping[#{idx}] must be a map"
       next
     end
-    %w[canonical_capability macos_package_id arch_package_id notes].each do |k|
+    %w[canonical_capability os_package_ids notes].each do |k|
       errors << "#{path}: os_package_mapping[#{idx}] missing '#{k}'" unless mapping.key?(k)
     end
+    unless mapping["os_package_ids"].is_a?(Hash)
+      errors << "#{path}: os_package_mapping[#{idx}].os_package_ids must be a map"
+      next
+    end
+    mapping["os_package_ids"].each do |os_id, package_id|
+      unless os_id.is_a?(String) && os_id.match?(/^OS-[a-z0-9-]+$/)
+        errors << "#{path}: os_package_mapping[#{idx}] has invalid os key '#{os_id}'"
+      end
+      unless package_id.is_a?(String) && !package_id.strip.empty?
+        errors << "#{path}: os_package_mapping[#{idx}] package id for '#{os_id}' must be a non-empty string"
+      end
+    end
+    capability_mapping_refs << [path, idx, mapping]
   end
 
   allowed_impacts = schemas.dig("capability", "enums", "exception_compliance_impact") || []
@@ -249,6 +263,21 @@ os_docs.each do |path|
     unless allowed_severity.include?(rule["severity"])
       errors << "#{path}: rule '#{rule_id}' has invalid severity '#{rule["severity"]}'"
     end
+  end
+end
+
+declared_os_ids = oses.keys.to_set
+capability_mapping_refs.each do |path, idx, mapping|
+  os_package_ids = mapping["os_package_ids"] || {}
+  mapping_os_ids = os_package_ids.keys.to_set
+  missing_os_ids = declared_os_ids - mapping_os_ids
+  extra_os_ids = mapping_os_ids - declared_os_ids
+
+  unless missing_os_ids.empty?
+    errors << "#{path}: os_package_mapping[#{idx}] missing os_package_ids for #{missing_os_ids.to_a.sort.join(', ')}"
+  end
+  unless extra_os_ids.empty?
+    errors << "#{path}: os_package_mapping[#{idx}] has unknown os_package_ids keys #{extra_os_ids.to_a.sort.join(', ')}"
   end
 end
 

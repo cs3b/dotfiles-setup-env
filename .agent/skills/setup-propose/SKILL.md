@@ -20,7 +20,7 @@ Use this skill when the user wants to know what to change on the machine to matc
 1. Run mandatory preflight checks before planning any mutation:
    - verify package names exist before install commands are proposed
    - verify native distribution availability for required CLIs before proposing JS-wrapper installs
-   - verify shell init chain coverage for login-noninteractive probes (`.bash_profile -> .bashrc`)
+   - verify fish init coverage for noninteractive probes (`fish -c 'echo ok'`)
    - verify headless-safe plugin build methods for Neovim dependencies
    - verify Bun global install runtime assumptions (including shebang/runtime compatibility)
 2. Evaluate rule status: pass, warn, fail, not-applicable.
@@ -50,7 +50,7 @@ Use this skill when the user wants to know what to change on the machine to matc
 - Never mix high-risk network installs with unrelated file writes in the same parallel batch.
 - Treat package-name and command-name mismatches as blocking planning errors until clarified.
 - Treat an install as incomplete until the immediate smoke probe passes.
-- For shortcut requirements, use shell-native implementations by active shell (fish abbr; bash/zsh alias or function) instead of forcing one shell style.
+- For shortcut requirements, standardize on fish abbreviations (`abbr`) for defined mappings.
 
 ## References
 - Prioritization: `references/remediation-priority.md`

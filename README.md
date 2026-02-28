@@ -32,6 +32,7 @@ Start here: [`quickstart.md`](quickstart.md)
 - `validation/`: scenarios, checklist, and waivers.
 - `schemas/`: contract schema definitions.
 - `contracts/`: generated contract index and runner contract.
+  - NixOS parity blueprint: `contracts/nixos-migration.md`
 - `tools/`: validation and index-generation scripts.
 - `nvim/`: active Neovim dotfile fragments for this setup.
 - `tmux/`: active tmux dotfile fragments for this setup.

@@ -3,7 +3,7 @@ kind: checklist
 core_blockers:
   - VAL-shell-01
   - VAL-shell-02
-  - VAL-shell-10
+
   - VAL-abbreviations-claude-01
   - VAL-abbreviations-claude-03
   - VAL-abbreviations-ace-taskflow-02
@@ -31,16 +31,18 @@ core_blockers:
   - VAL-os-macos-01
   - VAL-os-arch-01
   - VAL-os-arch-02
+  - VAL-os-nixos-01
+  - VAL-os-nixos-02
 core_warns:
   - VAL-shell-03
   - VAL-shell-04
   - VAL-shell-08
-  - VAL-shell-11
+
   - VAL-abbreviations-claude-02
   - VAL-abbreviations-git-01
-  - VAL-abbreviations-git-02
+
   - VAL-abbreviations-ace-taskflow-01
-  - VAL-abbreviations-ace-taskflow-03
+
   - VAL-package-tooling-04
   - VAL-package-tooling-06
   - VAL-editor-neovim-03
@@ -61,6 +63,7 @@ core_warns:
   - VAL-os-macos-02
   - VAL-os-macos-03
   - VAL-os-arch-03
+  - VAL-os-nixos-03
 optional_by_profile:
   PROFILE-optional-ai-coding:
     blockers: []

@@ -21,4 +21,4 @@ validation_policy:
 ---
 # Core Profile
 
-Defines the minimum environment contract required on both macOS and Arch Linux.
+Defines the minimum environment contract required on macOS, Arch Linux, and NixOS.

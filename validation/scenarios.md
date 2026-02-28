@@ -11,31 +11,36 @@ scenarios:
       - PROFILE-core
     platform: OS-arch
     expected: all non-waived core blockers pass
-  - scenario_id: SCN-shell-portability
+  - scenario_id: SCN-fresh-nixos-core
+    profiles:
+      - PROFILE-core
+    platform: OS-nixos
+    expected: all non-waived core blockers pass
+  - scenario_id: SCN-fish-shell
     profiles:
       - PROFILE-core
     platform: any
-    expected: shell runtime probes and smart-jump behavior hold across installed shells among fish zsh bash
+    expected: fish shell runtime probes and smart-jump behavior pass
   - scenario_id: SCN-abbreviations-claude
     profiles:
       - PROFILE-core
     platform: any
-    expected: claude abbreviations map correctly and remain behaviorally equivalent across installed shells
+    expected: claude abbreviations are defined as fish abbreviations with correct expansions
   - scenario_id: SCN-abbreviations-git
     profiles:
       - PROFILE-core
     platform: any
-    expected: git abbreviations map correctly and remain behaviorally equivalent across installed shells
+    expected: git abbreviations are defined as fish abbreviations with correct expansions
   - scenario_id: SCN-abbreviations-ace-taskflow
     profiles:
       - PROFILE-core
     platform: any
-    expected: active shell resolves tfts to ace-taskflow tasks via shell-native mapping (fish abbr or bash/zsh alias/function)
-  - scenario_id: SCN-shell-init-chain
+    expected: fish resolves tfts to ace-taskflow tasks via abbreviation
+  - scenario_id: SCN-fish-init
     profiles:
       - PROFILE-core
     platform: any
-    expected: noninteractive probes succeed for installed shells among fish zsh bash and bash init-chain checks pass when bash is present
+    expected: fish noninteractive probes succeed and runtime manager is activated
   - scenario_id: SCN-neovim-behavior
     profiles:
       - PROFILE-core

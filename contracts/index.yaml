@@ -7,7 +7,6 @@ capabilities:
   rule_ids:
   - VAL-abbreviations-ace-taskflow-01
   - VAL-abbreviations-ace-taskflow-02
-  - VAL-abbreviations-ace-taskflow-03
 - id: CAP-abbreviations-claude
   path: capabilities/abbreviations-claude.md
   status: required
@@ -20,7 +19,6 @@ capabilities:
   status: required
   rule_ids:
   - VAL-abbreviations-git-01
-  - VAL-abbreviations-git-02
 - id: CAP-ai-auth
   path: capabilities/ai-auth.md
   status: optional:PROFILE-optional-ai-coding
@@ -89,8 +87,6 @@ capabilities:
   - VAL-shell-03
   - VAL-shell-04
   - VAL-shell-08
-  - VAL-shell-10
-  - VAL-shell-11
 - id: CAP-ssh-git-access
   path: capabilities/ssh-git-access.md
   status: required
@@ -152,6 +148,12 @@ os:
   - VAL-os-macos-01
   - VAL-os-macos-02
   - VAL-os-macos-03
+- id: OS-nixos
+  path: os/nixos.md
+  rule_ids:
+  - VAL-os-nixos-01
+  - VAL-os-nixos-02
+  - VAL-os-nixos-03
 validation:
   scenarios:
     path: validation/scenarios.md
@@ -161,8 +163,11 @@ validation:
     - SCN-abbreviations-git
     - SCN-bun-global-shebang-compatibility
     - SCN-clipboard-sharing-ssh-tmux-nvim
+    - SCN-fish-init
+    - SCN-fish-shell
     - SCN-fresh-arch-core
     - SCN-fresh-macos-core
+    - SCN-fresh-nixos-core
     - SCN-gh-auth-and-git-identity
     - SCN-headless-markdown-preview-build
     - SCN-install-smoke-after-mutation
@@ -172,8 +177,6 @@ validation:
     - SCN-optional-ai-coding-enabled
     - SCN-optional-profile-disabled
     - SCN-security-hygiene-scan
-    - SCN-shell-init-chain
-    - SCN-shell-portability
     - SCN-tmux-baseline
   checklist:
     path: validation/checklist.md
@@ -190,6 +193,8 @@ validation:
     - VAL-os-arch-01
     - VAL-os-arch-02
     - VAL-os-macos-01
+    - VAL-os-nixos-01
+    - VAL-os-nixos-02
     - VAL-package-tooling-01
     - VAL-package-tooling-02
     - VAL-package-tooling-03
@@ -198,7 +203,6 @@ validation:
     - VAL-security-hygiene-02
     - VAL-shell-01
     - VAL-shell-02
-    - VAL-shell-10
     - VAL-ssh-git-access-01
     - VAL-ssh-git-access-04
     - VAL-ssh-git-access-07
@@ -210,10 +214,8 @@ validation:
     - VAL-version-manager-06
     core_warns:
     - VAL-abbreviations-ace-taskflow-01
-    - VAL-abbreviations-ace-taskflow-03
     - VAL-abbreviations-claude-02
     - VAL-abbreviations-git-01
-    - VAL-abbreviations-git-02
     - VAL-clipboard-sharing-01
     - VAL-clipboard-sharing-05
     - VAL-editor-neovim-03
@@ -225,13 +227,13 @@ validation:
     - VAL-os-arch-03
     - VAL-os-macos-02
     - VAL-os-macos-03
+    - VAL-os-nixos-03
     - VAL-package-tooling-04
     - VAL-package-tooling-06
     - VAL-security-hygiene-03
     - VAL-shell-03
     - VAL-shell-04
     - VAL-shell-08
-    - VAL-shell-11
     - VAL-ssh-git-access-02
     - VAL-ssh-git-access-03
     - VAL-ssh-git-access-05
@@ -242,15 +244,14 @@ validation:
     - PROFILE-optional-ai-coding
   waivers:
     path: validation/waivers.yaml
-    waiver_ids: []
+    waiver_ids:
+    - WVR-fonts-terminal-01
+    - WVR-fonts-terminal-02
 rules:
 - id: VAL-abbreviations-ace-taskflow-01
   source_type: capability
   source_id: CAP-abbreviations-ace-taskflow
 - id: VAL-abbreviations-ace-taskflow-02
-  source_type: capability
-  source_id: CAP-abbreviations-ace-taskflow
-- id: VAL-abbreviations-ace-taskflow-03
   source_type: capability
   source_id: CAP-abbreviations-ace-taskflow
 - id: VAL-abbreviations-claude-01
@@ -263,9 +264,6 @@ rules:
   source_type: capability
   source_id: CAP-abbreviations-claude
 - id: VAL-abbreviations-git-01
-  source_type: capability
-  source_id: CAP-abbreviations-git
-- id: VAL-abbreviations-git-02
   source_type: capability
   source_id: CAP-abbreviations-git
 - id: VAL-ai-auth-01
@@ -352,6 +350,15 @@ rules:
 - id: VAL-os-macos-03
   source_type: os
   source_id: OS-macos
+- id: VAL-os-nixos-01
+  source_type: os
+  source_id: OS-nixos
+- id: VAL-os-nixos-02
+  source_type: os
+  source_id: OS-nixos
+- id: VAL-os-nixos-03
+  source_type: os
+  source_id: OS-nixos
 - id: VAL-package-tooling-01
   source_type: capability
   source_id: CAP-package-tooling
@@ -392,12 +399,6 @@ rules:
   source_type: capability
   source_id: CAP-shell
 - id: VAL-shell-08
-  source_type: capability
-  source_id: CAP-shell
-- id: VAL-shell-10
-  source_type: capability
-  source_id: CAP-shell
-- id: VAL-shell-11
   source_type: capability
   source_id: CAP-shell
 - id: VAL-ssh-git-access-01

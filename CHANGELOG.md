@@ -2,6 +2,34 @@
 
 All notable changes to this repository are documented in this file.
 
+## 2026-02-28 (nixos contract parity foundation)
+- Added `OS-nixos` contract (`os/nixos.md`) with blocker/warn rule set and source-selection exception policy.
+- Added `SCN-fresh-nixos-core` scenario and checklist categorization for `VAL-os-nixos-01..03`.
+- Generalized capability package mappings from fixed `macos_package_id` / `arch_package_id` fields to `os_package_ids` keyed by `OS-*` IDs.
+- Updated validator logic to enforce the new mapping shape and verify each mapping includes all declared OS IDs.
+- Added migration blueprint document `contracts/nixos-migration.md` for flakes-based NixOS + Home Manager parity rollout.
+- Updated core profile narrative to include NixOS in platform scope.
+
+## 2026-02-26 (fish-only abbreviation policy cleanup)
+- Clarified `CAP-abbreviations-ace-taskflow` intent to require fish abbreviation mapping only.
+- Updated contribution guidance to validate fish shell runtime behavior instead of cross-shell parity checks.
+- Updated `setup-propose` skill guardrails and preflight guidance to standardize shortcut mappings on fish abbreviations.
+- Changed `gc` in fish git shortcuts from a function wrapper to a true fish abbreviation (`gc -> git commit`).
+
+## 2026-02-14 (switch to fish as default shell)
+- Made fish the default interactive shell (`chsh -s /usr/bin/fish`).
+- Added active fish config files under `fish/.config/fish/`:
+  - `config.fish` with mise, starship, zoxide, and fzf initialization.
+  - `conf.d/abbreviations-git.fish` with all git abbreviations and `gc` function.
+  - `conf.d/abbreviations-claude.fish` with core and extended Claude CLI abbreviations.
+  - `conf.d/abbreviations-ace-taskflow.fish` with tfts abbreviation.
+- Updated `CAP-shell` to declare fish as the required default shell; removed bash/zsh multi-shell probing rules (VAL-shell-10, VAL-shell-11).
+- Updated abbreviation capabilities to fish-only; removed cross-shell parity rules (VAL-abbreviations-git-02, VAL-abbreviations-ace-taskflow-03).
+- Updated `CAP-version-manager` shell probe methods to use fish instead of bash.
+- Updated checklist and scenarios for fish-only validation.
+- Removed `templates/shell/ace-taskflow-shortcuts.sh` (bash version).
+- Fixed waivers.yaml schema compliance (added waiver_id, rationale, owner, status, corrected scope format).
+
 ## 2026-02-13 (ssh clipboard sharing via osc52)
 - Added `CAP-clipboard-sharing` with explicit rules for OSC52 workflow across SSH, tmux, and Neovim.
 - Added active dotfile configs:
