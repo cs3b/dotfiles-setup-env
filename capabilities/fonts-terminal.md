@@ -28,19 +28,20 @@ os_package_mapping:
   os_package_ids:
     OS-macos: manual-or-font-package
     OS-arch: ttf-jetbrains-mono-nerd
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: nerd-fonts-jetbrains-mono
 - canonical_capability: terminal-emulator
   notes: Validate behavior, not specific application.
   os_package_ids:
     OS-macos: user-choice
     OS-arch: user-choice
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: user-choice
 known_exceptions:
 - id: EXC-fonts-terminal-01
   statement: Headless servers may skip this capability if no interactive terminal
     UI is in scope.
   compliance_impact: warn
 ---
+
 # Fonts and Terminal Rendering Capability
 
 This capability defines font and rendering outcomes for terminal and editor display quality.

@@ -23,19 +23,20 @@ os_package_mapping:
   os_package_ids:
     OS-macos: custom-tooling
     OS-arch: custom-tooling
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: custom-tooling
 - canonical_capability: ace-taskflow-shortcuts
   notes: Capability is config-based; implemented as fish abbreviations.
   os_package_ids:
     OS-macos: shell-config
     OS-arch: shell-config
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: shell-config
 known_exceptions:
 - id: EXC-abbreviations-ace-taskflow-01
   statement: If ace-taskflow is intentionally omitted, shortcut checks may be acknowledged
     only as non-blocking warnings.
   compliance_impact: blocker-waivable
 ---
+
 # ace-taskflow Abbreviations Capability
 
 This capability defines taskflow shortcut expectations as fish shell abbreviations.

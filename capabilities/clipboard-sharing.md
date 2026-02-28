@@ -47,25 +47,26 @@ os_package_mapping:
   os_package_ids:
     OS-macos: n-a
     OS-arch: n-a
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: n-a
 - canonical_capability: tmux-clipboard-forwarding
   notes: Requires tmux option configuration for passthrough and clipboard features.
   os_package_ids:
     OS-macos: tmux
     OS-arch: tmux
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: tmux
 - canonical_capability: terminal-osc52-support
   notes: Host terminal must support and allow OSC52 clipboard access.
   os_package_ids:
     OS-macos: iterm2
     OS-arch: n-a
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: terminal-emulator
 known_exceptions:
 - id: EXC-clipboard-sharing-01
   statement: Hosts without OSC52-capable terminals may acknowledge clipboard sharing
     as warn-level degraded behavior.
   compliance_impact: warn
 ---
+
 # Clipboard Sharing Capability
 
 This capability defines remote-to-host clipboard sharing behavior across SSH, tmux, and Neovim.

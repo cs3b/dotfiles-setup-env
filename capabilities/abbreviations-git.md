@@ -22,13 +22,14 @@ os_package_mapping:
   os_package_ids:
     OS-macos: shell-config
     OS-arch: shell-config
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: shell-config
 known_exceptions:
 - id: EXC-abbreviations-git-01
   statement: Shell-specific implementation details may differ if resulting behavior
     is equivalent.
   compliance_impact: warn
 ---
+
 # Git Abbreviations Capability
 
 This capability defines required git shortcut behavior as fish shell abbreviations.

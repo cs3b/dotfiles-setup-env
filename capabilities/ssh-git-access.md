@@ -55,19 +55,19 @@ os_package_mapping:
   os_package_ids:
     OS-macos: system-default
     OS-arch: openssh
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: openssh
 - canonical_capability: git-transport
   notes: Required.
   os_package_ids:
     OS-macos: git
     OS-arch: git
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: git
 - canonical_capability: github-cli
   notes: Required.
   os_package_ids:
     OS-macos: gh
     OS-arch: github-cli
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: github-cli
 known_exceptions:
 - id: EXC-ssh-git-access-01
   statement: Enterprise SSH policies may require alternate host alias; equivalent
@@ -78,6 +78,7 @@ known_exceptions:
     git identity when commits are not produced.
   compliance_impact: blocker-waivable
 ---
+
 # SSH Git Access Capability
 
 This capability defines SSH transport expectations and GitHub CLI availability.

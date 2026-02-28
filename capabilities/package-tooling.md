@@ -52,140 +52,140 @@ os_package_mapping:
   os_package_ids:
     OS-macos: ripgrep
     OS-arch: ripgrep
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: ripgrep
 - canonical_capability: fd
   notes: Required.
   os_package_ids:
     OS-macos: fd
     OS-arch: fd
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: fd
 - canonical_capability: bat
   notes: Recommended.
   os_package_ids:
     OS-macos: bat
     OS-arch: bat
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: bat
 - canonical_capability: eza
   notes: Recommended.
   os_package_ids:
     OS-macos: eza
     OS-arch: eza
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: eza
 - canonical_capability: dust
   notes: Recommended.
   os_package_ids:
     OS-macos: dust
     OS-arch: dust
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: dust
 - canonical_capability: bottom
   notes: Binary may be btm.
   os_package_ids:
     OS-macos: bottom
     OS-arch: bottom
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: bottom
 - canonical_capability: jq
   notes: Required.
   os_package_ids:
     OS-macos: jq
     OS-arch: jq
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: jq
 - canonical_capability: yq
   notes: Required.
   os_package_ids:
     OS-macos: yq
     OS-arch: yq
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: yq
 - canonical_capability: procs
   notes: Recommended.
   os_package_ids:
     OS-macos: procs
     OS-arch: procs
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: procs
 - canonical_capability: hyperfine
   notes: Recommended.
   os_package_ids:
     OS-macos: hyperfine
     OS-arch: hyperfine
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: hyperfine
 - canonical_capability: zoxide
   notes: Recommended.
   os_package_ids:
     OS-macos: zoxide
     OS-arch: zoxide
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: zoxide
 - canonical_capability: starship
   notes: Recommended.
   os_package_ids:
     OS-macos: starship
     OS-arch: starship
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: starship
 - canonical_capability: git-delta
   notes: Required for enhanced diff ergonomics.
   os_package_ids:
     OS-macos: git-delta
     OS-arch: git-delta
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: git-delta
 - canonical_capability: xh
   notes: Recommended.
   os_package_ids:
     OS-macos: xh
     OS-arch: xh
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: xh
 - canonical_capability: tealdeer
   notes: Recommended.
   os_package_ids:
     OS-macos: tealdeer
     OS-arch: tealdeer
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: tealdeer
 - canonical_capability: bandwhich
   notes: Recommended.
   os_package_ids:
     OS-macos: bandwhich
     OS-arch: bandwhich
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: bandwhich
 - canonical_capability: less-pager
   notes: Recommended for git pager compatibility (for example git log and shortcut
     gl).
   os_package_ids:
     OS-macos: less
     OS-arch: less
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: less
 - canonical_capability: lazygit
   notes: Required.
   os_package_ids:
     OS-macos: lazygit
     OS-arch: lazygit
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: lazygit
 - canonical_capability: github-cli
   notes: Required.
   os_package_ids:
     OS-macos: gh
     OS-arch: github-cli
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: github-cli
 - canonical_capability: git-lfs
   notes: Required.
   os_package_ids:
     OS-macos: git-lfs
     OS-arch: git-lfs
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: git-lfs
 - canonical_capability: codex-cli
   notes: Required native install.
   os_package_ids:
     OS-macos: codex
     OS-arch: openai-codex-bin
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: openai-codex
 - canonical_capability: claude-cli
   notes: Required native install.
   os_package_ids:
     OS-macos: claude-code
     OS-arch: claude-code-bin
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: claude-code
 - canonical_capability: gh-init-helper
   notes: Recommended for repository bootstrap flow.
   os_package_ids:
     OS-macos: custom-tooling
     OS-arch: custom-tooling
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: custom-tooling
 known_exceptions:
 - id: EXC-package-tooling-01
   statement: Functionally equivalent binaries may replace listed tools if validation
@@ -200,6 +200,7 @@ known_exceptions:
     may be used only with documented rationale and passing smoke probes.
   compliance_impact: warn
 ---
+
 # Package Tooling Capability
 
 This capability defines required and recommended command-line tooling outcomes.

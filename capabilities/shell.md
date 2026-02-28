@@ -40,21 +40,22 @@ os_package_mapping:
   os_package_ids:
     OS-macos: fish
     OS-arch: fish
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: fish
 - canonical_capability: Prompt engine
   notes: Optional if equivalent prompt customization exists.
   os_package_ids:
     OS-macos: starship
     OS-arch: starship
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: starship
 - canonical_capability: Directory jumper
   notes: Optional but recommended.
   os_package_ids:
     OS-macos: zoxide
     OS-arch: zoxide
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: zoxide
 known_exceptions: []
 ---
+
 # Shell Capability
 
 This capability defines fish as the default interactive shell with runtime initialization, prompt customization, and directory jump integration.

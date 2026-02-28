@@ -50,43 +50,44 @@ os_package_mapping:
   os_package_ids:
     OS-macos: gh
     OS-arch: github-cli
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: github-cli
 - canonical_capability: codex-cli-auth
   notes: Optional auth validation.
   os_package_ids:
     OS-macos: codex
     OS-arch: openai-codex-bin
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: openai-codex
 - canonical_capability: claude-cli-auth
   notes: Optional auth validation.
   os_package_ids:
     OS-macos: claude-code
     OS-arch: claude-code-bin
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: claude-code
 - canonical_capability: gemini-cli-auth
   notes: Optional auth validation.
   os_package_ids:
     OS-macos: bun-global
     OS-arch: bun-global
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: bun
 - canonical_capability: opencode-cli-auth
   notes: Optional auth validation.
   os_package_ids:
     OS-macos: bun-global
     OS-arch: bun-global
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: bun
 - canonical_capability: pi-cli-auth
   notes: Package name is @mariozechner/pi-coding-agent; runtime command is pi.
   os_package_ids:
     OS-macos: bun-global
     OS-arch: bun-global
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: bun
 known_exceptions:
 - id: EXC-ai-auth-01
   statement: Some CLIs do not expose direct auth-status commands; equivalent noninteractive
     probes may be used.
   compliance_impact: warn
 ---
+
 # AI and Git Auth Capability
 
 This capability defines optional authentication readiness checks for AI and git-related CLIs.

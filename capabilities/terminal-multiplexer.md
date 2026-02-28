@@ -23,13 +23,14 @@ os_package_mapping:
   os_package_ids:
     OS-macos: tmux
     OS-arch: tmux
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: tmux
 known_exceptions:
 - id: EXC-terminal-multiplexer-01
   statement: Restricted shells may not permit starting a tmux server during validation;
     binary availability remains mandatory.
   compliance_impact: warn
 ---
+
 # Terminal Multiplexer Capability
 
 This capability defines baseline tmux availability and version observability.

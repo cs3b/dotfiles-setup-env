@@ -35,19 +35,20 @@ os_package_mapping:
   os_package_ids:
     OS-macos: claude-code
     OS-arch: claude-code-bin
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: claude-code
 - canonical_capability: claude-shortcuts
   notes: Capability is config-based; implemented as fish abbreviations.
   os_package_ids:
     OS-macos: shell-config
     OS-arch: shell-config
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: shell-config
 known_exceptions:
 - id: EXC-abbreviations-claude-01
   statement: If Claude CLI is intentionally absent, blocker rules may be waived only
     when AI workflow profile is disabled.
   compliance_impact: blocker-waivable
 ---
+
 # Claude Abbreviations Capability
 
 This capability isolates Claude-specific shortcut requirements as fish shell abbreviations.

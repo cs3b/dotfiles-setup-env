@@ -54,37 +54,37 @@ os_package_mapping:
   os_package_ids:
     OS-macos: mise
     OS-arch: mise
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: mise
 - canonical_capability: ruby-runtime
   notes: Validate by runtime availability.
   os_package_ids:
     OS-macos: manager-provisioned
     OS-arch: manager-provisioned
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: manager-provisioned
 - canonical_capability: bun-runtime
   notes: Validate by runtime availability.
   os_package_ids:
     OS-macos: manager-provisioned
     OS-arch: manager-provisioned
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: manager-provisioned
 - canonical_capability: gemini-cli
   notes: Validate command capability, not registry name.
   os_package_ids:
     OS-macos: bun-global
     OS-arch: bun-global
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: bun
 - canonical_capability: opencode-cli
   notes: Package name is opencode-ai; runtime command is opencode.
   os_package_ids:
     OS-macos: bun-global
     OS-arch: bun-global
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: bun
 - canonical_capability: pi-cli
   notes: Package name is @mariozechner/pi-coding-agent; runtime command is pi.
   os_package_ids:
     OS-macos: bun-global
     OS-arch: bun-global
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: bun
 known_exceptions:
 - id: EXC-version-manager-01
   statement: Alternative runtime managers are allowed if replacement is declared and
@@ -95,6 +95,7 @@ known_exceptions:
     be used as the smoke test.
   compliance_impact: warn
 ---
+
 # Runtime Version Manager Capability
 
 This capability defines runtime management outcomes and global CLI availability.

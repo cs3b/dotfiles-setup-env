@@ -23,13 +23,14 @@ os_package_mapping:
   os_package_ids:
     OS-macos: firebase-cli
     OS-arch: firebase-cli
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: firebase-cli
 known_exceptions:
 - id: EXC-deploy-firebase-01
   statement: Teams that do not use Firebase may keep this capability disabled by leaving
     optional profile unset.
   compliance_impact: none
 ---
+
 # Firebase Deploy Capability
 
 This capability defines optional Firebase deployment readiness checks.

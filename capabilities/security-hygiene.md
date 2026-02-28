@@ -33,13 +33,14 @@ os_package_mapping:
   os_package_ids:
     OS-macos: n-a
     OS-arch: n-a
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: n-a
 known_exceptions:
 - id: EXC-security-hygiene-01
   statement: Token-like test fixtures may be committed only if clearly marked non-production
     and excluded from blocker scanning rules.
   compliance_impact: blocker-waivable
 ---
+
 # Security Hygiene Capability
 
 This capability defines secret-handling outcomes for tracked setup artifacts.

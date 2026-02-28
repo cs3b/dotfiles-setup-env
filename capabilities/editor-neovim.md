@@ -52,25 +52,26 @@ os_package_mapping:
   os_package_ids:
     OS-macos: neovim
     OS-arch: neovim
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: neovim
 - canonical_capability: lazyvim-baseline
   notes: Config-level capability.
   os_package_ids:
     OS-macos: n-a
     OS-arch: n-a
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: n-a
 - canonical_capability: markdown-preview-backend
   notes: Validate behavior, not installer choice.
   os_package_ids:
     OS-macos: plugin-managed
     OS-arch: plugin-managed
-    OS-nixos: todo-verify-nix-attr-or-exception
+    OS-nixos: plugin-managed
 known_exceptions:
 - id: EXC-editor-neovim-01
   statement: Temporary plugin sync failures are noncompliant only if capability remains
     unavailable after retry.
   compliance_impact: warn
 ---
+
 # Neovim Editor Capability
 
 This capability defines observable Neovim behavior outcomes rather than a specific plugin manager workflow.
